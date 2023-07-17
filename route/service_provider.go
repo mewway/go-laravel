@@ -4,7 +4,7 @@ import (
 	"github.com/goravel/framework/contracts/foundation"
 )
 
-const Binding = "goravel.route"
+const Binding = "cicada.route"
 
 type ServiceProvider struct {
 }

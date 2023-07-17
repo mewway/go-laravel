@@ -5,7 +5,7 @@ import (
 	"github.com/goravel/framework/contracts/log"
 )
 
-const Binding = "goravel.grpc"
+const Binding = "cicada.grpc"
 
 var LogFacade log.Log
 

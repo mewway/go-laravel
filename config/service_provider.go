@@ -5,7 +5,7 @@ import (
 	"github.com/goravel/framework/support"
 )
 
-const Binding = "goravel.config"
+const Binding = "cicada.config"
 
 type ServiceProvider struct {
 }

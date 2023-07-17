@@ -21,7 +21,7 @@ type Application struct {
 func NewApplication(envPath string) *Application {
 	if !file.Exists(envPath) {
 		color.Redln("Please create " + envPath + " and initialize it first.")
-		color.Warnln("Example command: \ncp .env.example .env && go run . artisan key:generate")
+		color.Warnln("Example command: \ncp .env.sample .env && go run . artisan key:generate")
 		os.Exit(0)
 	}
 
@@ -35,7 +35,7 @@ func NewApplication(envPath string) *Application {
 		os.Exit(0)
 	}
 
-	app.vip.SetEnvPrefix("goravel")
+	app.vip.SetEnvPrefix("cicada")
 	app.vip.AutomaticEnv()
 
 	appKey := app.Env("APP_KEY")

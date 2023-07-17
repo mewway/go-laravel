@@ -9,8 +9,8 @@ import (
 	"github.com/goravel/framework/database/console"
 )
 
-const BindingOrm = "goravel.orm"
-const BindingSeeder = "goravel.seeder"
+const BindingOrm = "cicada.orm"
+const BindingSeeder = "cicada.seeder"
 
 type ServiceProvider struct {
 }

@@ -23,7 +23,7 @@ type TestDisk struct {
 
 func TestStorage(t *testing.T) {
 	if !file.Exists("../.env") && os.Getenv("AWS_ACCESS_KEY_ID") == "" {
-		color.Redln("No filesystem tests run, need create .env based on .env.example, then initialize it")
+		color.Redln("No filesystem tests run, need create .env based on .app.example, then initialize it")
 		return
 	}
 

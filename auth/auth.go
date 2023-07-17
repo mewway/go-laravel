@@ -18,7 +18,7 @@ import (
 	"github.com/goravel/framework/support/database"
 )
 
-const ctxKey = "GoravelAuth"
+const CtxKey = "GoravelAuth"
 
 type Claims struct {
 	Key string `json:"key"`
@@ -58,7 +58,7 @@ func (a *Auth) Guard(name string) contractsauth.Auth {
 
 // User need parse token first.
 func (a *Auth) User(ctx http.Context, user any) error {
-	auth, ok := ctx.Value(ctxKey).(Guards)
+	auth, ok := ctx.Value(CtxKey).(Guards)
 	if !ok || auth[a.guard] == nil {
 		return ErrorParseTokenFirst
 	}
@@ -173,7 +173,7 @@ func (a *Auth) LoginUsingID(ctx http.Context, id any) (token string, err error) 
 
 // Refresh need parse token first.
 func (a *Auth) Refresh(ctx http.Context) (token string, err error) {
-	auth, ok := ctx.Value(ctxKey).(Guards)
+	auth, ok := ctx.Value(CtxKey).(Guards)
 	if !ok || auth[a.guard] == nil {
 		return "", ErrorParseTokenFirst
 	}
@@ -192,7 +192,7 @@ func (a *Auth) Refresh(ctx http.Context) (token string, err error) {
 }
 
 func (a *Auth) Logout(ctx http.Context) error {
-	auth, ok := ctx.Value(ctxKey).(Guards)
+	auth, ok := ctx.Value(CtxKey).(Guards)
 	if !ok || auth[a.guard] == nil || auth[a.guard].Token == "" {
 		return nil
 	}
@@ -209,13 +209,13 @@ func (a *Auth) Logout(ctx http.Context) error {
 	}
 
 	delete(auth, a.guard)
-	ctx.WithValue(ctxKey, auth)
+	ctx.WithValue(CtxKey, auth)
 
 	return nil
 }
 
 func (a *Auth) makeAuthContext(ctx http.Context, claims *Claims, token string) {
-	ctx.WithValue(ctxKey, Guards{
+	ctx.WithValue(CtxKey, Guards{
 		a.guard: {claims, token},
 	})
 }

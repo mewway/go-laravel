@@ -16,7 +16,7 @@ import (
 	"github.com/goravel/framework/support/file"
 )
 
-var singleLog = "storage/logs/goravel.log"
+var singleLog = "storage/logs/cicada.log"
 var dailyLog = fmt.Sprintf("storage/logs/goravel-%s.log", carbon.Now().ToDateString())
 
 type LogrusTestSuite struct {

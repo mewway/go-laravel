@@ -4,7 +4,7 @@ import (
 	"github.com/goravel/framework/contracts/foundation"
 )
 
-const Binding = "goravel.schedule"
+const Binding = "cicada.schedule"
 
 type ServiceProvider struct {
 }

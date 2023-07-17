@@ -9,8 +9,8 @@ import (
 	"github.com/goravel/framework/contracts/foundation"
 )
 
-const BindingAuth = "goravel.auth"
-const BindingGate = "goravel.gate"
+const BindingAuth = "cicada.auth"
+const BindingGate = "cicada.gate"
 
 type ServiceProvider struct {
 }

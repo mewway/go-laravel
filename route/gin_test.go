@@ -1823,7 +1823,7 @@ func TestGinResponse(t *testing.T) {
 			url:    "/redirect",
 			setup: func(method, url string) error {
 				gin.Get("/redirect", func(ctx httpcontract.Context) {
-					ctx.Response().Redirect(http.StatusMovedPermanently, "https://goravel.dev")
+					ctx.Response().Redirect(http.StatusMovedPermanently, "https://cicada.dev")
 				})
 
 				var err error
@@ -1835,7 +1835,7 @@ func TestGinResponse(t *testing.T) {
 				return nil
 			},
 			expectCode: http.StatusMovedPermanently,
-			expectBody: "<a href=\"https://goravel.dev\">Moved Permanently</a>.\n\n",
+			expectBody: "<a href=\"https://cicada.dev\">Moved Permanently</a>.\n\n",
 		},
 	}
 

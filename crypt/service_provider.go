@@ -4,7 +4,7 @@ import (
 	"github.com/goravel/framework/contracts/foundation"
 )
 
-const Binding = "goravel.crypt"
+const Binding = "cicada.crypt"
 
 type ServiceProvider struct {
 }

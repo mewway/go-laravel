@@ -5,7 +5,7 @@ import (
 	"github.com/goravel/framework/contracts/queue"
 )
 
-const Binding = "goravel.mail"
+const Binding = "cicada.mail"
 
 type ServiceProvider struct {
 }

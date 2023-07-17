@@ -12,15 +12,17 @@ import (
 	"github.com/goravel/framework/support"
 )
 
+const CliAppName = "july"
+
 type Application struct {
 	instance *cli.App
 }
 
 func NewApplication() console.Artisan {
 	instance := cli.NewApp()
-	instance.Name = "Goravel Framework"
+	instance.Name = " Framework"
 	instance.Usage = support.Version
-	instance.UsageText = "artisan [global options] command [options] [arguments...]"
+	instance.UsageText = CliAppName + " [global options] command [options] [arguments...]"
 
 	return &Application{instance}
 }
@@ -44,19 +46,19 @@ func (c *Application) Register(commands []console.Command) {
 
 // Call Run an Artisan console command by name.
 func (c *Application) Call(command string) {
-	c.Run(append([]string{os.Args[0], "artisan"}, strings.Split(command, " ")...), false)
+	c.Run(append([]string{os.Args[0], CliAppName}, strings.Split(command, " ")...), false)
 }
 
 // CallAndExit Run an Artisan console command by name and exit.
 func (c *Application) CallAndExit(command string) {
-	c.Run(append([]string{os.Args[0], "artisan"}, strings.Split(command, " ")...), true)
+	c.Run(append([]string{os.Args[0], CliAppName}, strings.Split(command, " ")...), true)
 }
 
 // Run a command. Args come from os.Args.
 func (c *Application) Run(args []string, exitIfArtisan bool) {
 	artisanIndex := -1
 	for i, arg := range args {
-		if arg == "artisan" {
+		if arg == CliAppName {
 			artisanIndex = i
 			break
 		}
@@ -179,6 +181,6 @@ func printResult(command string) {
 	case "make:command":
 		color.Greenln("Console command created successfully")
 	case "-V", "--version":
-		color.Greenln("Goravel Framework " + support.Version)
+		color.Greenln("Cicada Framework " + support.Version)
 	}
 }

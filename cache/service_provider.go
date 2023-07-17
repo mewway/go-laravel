@@ -6,7 +6,7 @@ import (
 	"github.com/goravel/framework/contracts/foundation"
 )
 
-const Binding = "goravel.cache"
+const Binding = "cicada.cache"
 
 type ServiceProvider struct {
 }

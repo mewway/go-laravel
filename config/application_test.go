@@ -18,7 +18,7 @@ type ApplicationTestSuite struct {
 
 func TestApplicationTestSuite(t *testing.T) {
 	assert.Nil(t, file.Create(".env", "APP_KEY=12345678901234567890123456789012"))
-	temp, err := os.CreateTemp("", "goravel.env")
+	temp, err := os.CreateTemp("", "cicada.env")
 	assert.Nil(t, err)
 	defer os.Remove(temp.Name())
 	_, err = temp.Write([]byte("APP_KEY=12345678901234567890123456789012"))

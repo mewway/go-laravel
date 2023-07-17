@@ -6,7 +6,7 @@ import (
 	queueConsole "github.com/goravel/framework/queue/console"
 )
 
-const Binding = "goravel.queue"
+const Binding = "cicada.queue"
 
 type ServiceProvider struct {
 }

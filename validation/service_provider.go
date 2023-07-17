@@ -6,7 +6,7 @@ import (
 	"github.com/goravel/framework/validation/console"
 )
 
-const Binding = "goravel.validation"
+const Binding = "cicada.validation"
 
 type ServiceProvider struct {
 }

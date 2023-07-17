@@ -59,27 +59,27 @@ func (s *ApplicationTestSuite) SetupTest() {
 }
 
 func (s *ApplicationTestSuite) TestPath() {
-	s.Equal(filepath.Join("app", "goravel.go"), s.app.Path("goravel.go"))
+	s.Equal(filepath.Join("app", "cicada.go"), s.app.Path("cicada.go"))
 }
 
 func (s *ApplicationTestSuite) TestBasePath() {
-	s.Equal("goravel.go", s.app.BasePath("goravel.go"))
+	s.Equal("cicada.go", s.app.BasePath("cicada.go"))
 }
 
 func (s *ApplicationTestSuite) TestConfigPath() {
-	s.Equal(filepath.Join("config", "goravel.go"), s.app.ConfigPath("goravel.go"))
+	s.Equal(filepath.Join("config", "cicada.go"), s.app.ConfigPath("cicada.go"))
 }
 
 func (s *ApplicationTestSuite) TestDatabasePath() {
-	s.Equal(filepath.Join("database", "goravel.go"), s.app.DatabasePath("goravel.go"))
+	s.Equal(filepath.Join("database", "cicada.go"), s.app.DatabasePath("cicada.go"))
 }
 
 func (s *ApplicationTestSuite) TestStoragePath() {
-	s.Equal(filepath.Join("storage", "goravel.go"), s.app.StoragePath("goravel.go"))
+	s.Equal(filepath.Join("storage", "cicada.go"), s.app.StoragePath("cicada.go"))
 }
 
 func (s *ApplicationTestSuite) TestPublicPath() {
-	s.Equal(filepath.Join("public", "goravel.go"), s.app.PublicPath("goravel.go"))
+	s.Equal(filepath.Join("public", "cicada.go"), s.app.PublicPath("cicada.go"))
 }
 
 func (s *ApplicationTestSuite) TestPublishes() {

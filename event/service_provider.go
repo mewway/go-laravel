@@ -6,7 +6,7 @@ import (
 	eventConsole "github.com/goravel/framework/event/console"
 )
 
-const Binding = "goravel.event"
+const Binding = "cicada.event"
 
 type ServiceProvider struct {
 }

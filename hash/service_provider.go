@@ -4,7 +4,7 @@ import (
 	"github.com/goravel/framework/contracts/foundation"
 )
 
-const Binding = "goravel.hash"
+const Binding = "cicada.hash"
 
 type ServiceProvider struct {
 }

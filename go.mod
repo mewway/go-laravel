@@ -1,4 +1,4 @@
-module github.com/goravel/framework
+module github.com/mewway/go-laravel
 
 go 1.18
 

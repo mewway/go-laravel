@@ -11,7 +11,7 @@ import (
 	"github.com/goravel/framework/http/console"
 )
 
-const Binding = "goravel.http"
+const Binding = "cicada.http"
 
 var (
 	ConfigFacade      config.Config

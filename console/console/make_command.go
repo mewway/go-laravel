@@ -6,6 +6,7 @@ import (
 	"path/filepath"
 	"strings"
 
+	console2 "github.com/goravel/framework/console"
 	"github.com/goravel/framework/contracts/console"
 	"github.com/goravel/framework/contracts/console/command"
 	"github.com/goravel/framework/support/file"
@@ -26,7 +27,7 @@ func (receiver *MakeCommand) Signature() string {
 
 // Description The console command description.
 func (receiver *MakeCommand) Description() string {
-	return "Create a new Artisan command"
+	return "Create a new " + console2.CliAppName + " command"
 }
 
 // Extend The console command extend.

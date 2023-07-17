@@ -10,6 +10,6 @@ const (
 
 var (
 	Env      = EnvRuntime
-	EnvPath  = ".env"
+	EnvPath  = ".app.yml"
 	RootPath string
 )

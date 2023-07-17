@@ -17,12 +17,12 @@ func TestApp(t *testing.T) {
 			expected: "app",
 		},
 		"single arg": {
-			a:        []string{"config/goravel.go"},
-			expected: filepath.Join("app", "config", "goravel.go"),
+			a:        []string{"config/cicada.go"},
+			expected: filepath.Join("app", "config", "cicada.go"),
 		},
 		"multi arg": {
-			a:        []string{"config/goravel.go", "database/migrations"},
-			expected: filepath.Join("app", "config", "goravel.go"),
+			a:        []string{"config/cicada.go", "database/migrations"},
+			expected: filepath.Join("app", "config", "cicada.go"),
 		},
 	}
 
@@ -45,12 +45,12 @@ func TestBase(t *testing.T) {
 			expected: "",
 		},
 		"single arg": {
-			a:        []string{"config/goravel.go"},
-			expected: filepath.Join("config", "goravel.go"),
+			a:        []string{"config/cicada.go"},
+			expected: filepath.Join("config", "cicada.go"),
 		},
 		"multi arg": {
-			a:        []string{"config/goravel.go", "database/migrations"},
-			expected: filepath.Join("config", "goravel.go"),
+			a:        []string{"config/cicada.go", "database/migrations"},
+			expected: filepath.Join("config", "cicada.go"),
 		},
 	}
 
@@ -73,12 +73,12 @@ func TestConfig(t *testing.T) {
 			expected: "config",
 		},
 		"single arg": {
-			a:        []string{"goravel.go"},
-			expected: filepath.Join("config", "goravel.go"),
+			a:        []string{"cicada.go"},
+			expected: filepath.Join("config", "cicada.go"),
 		},
 		"multi arg": {
-			a:        []string{"goravel.go", "database/migrations"},
-			expected: filepath.Join("config", "goravel.go"),
+			a:        []string{"cicada.go", "database/migrations"},
+			expected: filepath.Join("config", "cicada.go"),
 		},
 	}
 

@@ -6,7 +6,7 @@ import (
 	"github.com/goravel/framework/contracts/foundation"
 )
 
-const Binding = "goravel.console"
+const Binding = "cicada.console"
 
 type ServiceProvider struct {
 }

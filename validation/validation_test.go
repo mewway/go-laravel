@@ -1675,7 +1675,7 @@ func TestRule_Email(t *testing.T) {
 			description: "success",
 			setup: func(c Case) {
 				validator, err := validation.Make(map[string]any{
-					"name": "hello@goravel.com",
+					"name": "hello@cicada.com",
 				}, map[string]string{
 					"name": "required|email",
 				})
@@ -2457,8 +2457,8 @@ func TestRule_FullUrl(t *testing.T) {
 			description: "success",
 			setup: func(c Case) {
 				validator, err := validation.Make(map[string]any{
-					"name":  "https://www.goravel.dev",
-					"name1": "http://www.goravel.dev",
+					"name":  "https://www.cicada.dev",
+					"name1": "http://www.cicada.dev",
 				}, map[string]string{
 					"name":  "required|full_url",
 					"name1": "required|full_url",
@@ -2676,19 +2676,19 @@ func TestCustomRule(t *testing.T) {
 type Uppercase struct {
 }
 
-//Signature The name of the rule.
+// Signature The name of the rule.
 func (receiver *Uppercase) Signature() string {
 	return "uppercase"
 }
 
-//Passes Determine if the validation rule passes.
+// Passes Determine if the validation rule passes.
 func (receiver *Uppercase) Passes(data httpvalidate.Data, val any, options ...any) bool {
 	name, exist := data.Get("name")
 
 	return strings.ToUpper(val.(string)) == val.(string) && len(val.(string)) == cast.ToInt(options[0]) && name == val && exist
 }
 
-//Message Get the validation error message.
+// Message Get the validation error message.
 func (receiver *Uppercase) Message() string {
 	return ":attribute must be upper"
 }
@@ -2696,19 +2696,19 @@ func (receiver *Uppercase) Message() string {
 type Lowercase struct {
 }
 
-//Signature The name of the rule.
+// Signature The name of the rule.
 func (receiver *Lowercase) Signature() string {
 	return "lowercase"
 }
 
-//Passes Determine if the validation rule passes.
+// Passes Determine if the validation rule passes.
 func (receiver *Lowercase) Passes(data httpvalidate.Data, val any, options ...any) bool {
 	address, exist := data.Get("address")
 
 	return strings.ToLower(val.(string)) == val.(string) && len(val.(string)) == cast.ToInt(options[0]) && address == val && exist
 }
 
-//Message Get the validation error message.
+// Message Get the validation error message.
 func (receiver *Lowercase) Message() string {
 	return ":attribute must be lower"
 }
@@ -2716,17 +2716,17 @@ func (receiver *Lowercase) Message() string {
 type Duplicate struct {
 }
 
-//Signature The name of the rule.
+// Signature The name of the rule.
 func (receiver *Duplicate) Signature() string {
 	return "required"
 }
 
-//Passes Determine if the validation rule passes.
+// Passes Determine if the validation rule passes.
 func (receiver *Duplicate) Passes(data httpvalidate.Data, val any, options ...any) bool {
 	return true
 }
 
-//Message Get the validation error message.
+// Message Get the validation error message.
 func (receiver *Duplicate) Message() string {
 	return ""
 }

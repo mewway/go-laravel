@@ -22,6 +22,8 @@ import (
 	"github.com/goravel/framework/validation"
 )
 
+const DefaultMemory = 32 << 20
+
 type GinRequest struct {
 	ctx        *GinContext
 	instance   *gin.Context
@@ -367,8 +369,7 @@ func getPostData(ctx *GinContext) (map[string]any, error) {
 
 	if contentType == "multipart/form-data" {
 		if request.PostForm == nil {
-			const defaultMemory = 32 << 20
-			if err := request.ParseMultipartForm(defaultMemory); err != nil {
+			if err := request.ParseMultipartForm(DefaultMemory); err != nil {
 				return nil, fmt.Errorf("parse multipart form error: %v", err)
 			}
 		}
