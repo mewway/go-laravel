@@ -7,6 +7,7 @@ import (
 
 	"github.com/mewway/go-laravel/contracts/config"
 	"github.com/mewway/go-laravel/contracts/database/orm"
+	"github.com/mewway/go-laravel/support"
 	"github.com/mewway/go-laravel/support/carbon"
 	"github.com/mewway/go-laravel/support/file"
 )
@@ -91,5 +92,5 @@ func (receiver MigrateCreator) populateStub(stub string, table string) string {
 func (receiver MigrateCreator) getPath(name string, category string) string {
 	pwd, _ := os.Getwd()
 
-	return fmt.Sprintf("%s/database/migrations/%s_%s.%s.sql", pwd, carbon.Now().ToShortDateTimeString(), name, category)
+	return fmt.Sprintf("%s/%s/%s/%s_%s.%s.sql", pwd, support.DirDatabase, support.DirMigration, carbon.Now().ToShortDateTimeString(), name, category)
 }

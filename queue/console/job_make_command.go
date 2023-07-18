@@ -7,6 +7,7 @@ import (
 	"strings"
 
 	"github.com/gookit/color"
+	"github.com/mewway/go-laravel/support"
 
 	"github.com/mewway/go-laravel/contracts/console"
 	"github.com/mewway/go-laravel/contracts/console/command"
@@ -71,7 +72,7 @@ func (receiver *JobMakeCommand) getPath(name string) string {
 
 	jobName, _, folderPath := receiver.parseName(name)
 
-	return filepath.Join(pwd, "app", "jobs", folderPath, str.Camel2Case(jobName)+".go")
+	return filepath.Join(pwd, support.DirApp, support.DirJob, folderPath, str.Camel2Case(jobName)+".go")
 }
 
 // parseName Parse the name to get the job name, package name and folder path.
@@ -82,7 +83,7 @@ func (receiver *JobMakeCommand) parseName(name string) (string, string, string) 
 
 	jobName := segments[len(segments)-1]
 
-	packageName := "jobs"
+	packageName := support.DirJob
 	folderPath := ""
 
 	if len(segments) > 1 {

@@ -67,7 +67,7 @@ func (receiver *MakeCommand) getPath(name string) string {
 
 	commandName, _, folderPath := receiver.parseName(name)
 
-	return filepath.Join(pwd, "app", "console", "commands", folderPath, str.Camel2Case(commandName)+".go")
+	return filepath.Join(pwd, support.DirCommand, folderPath, str.Camel2Case(commandName)+".go")
 }
 
 // parseName Parse the name to get the command name, package name and folder path.
@@ -78,7 +78,7 @@ func (receiver *MakeCommand) parseName(name string) (string, string, string) {
 
 	commandName := segments[len(segments)-1]
 
-	packageName := "commands"
+	packageName := support.DirCommand
 	folderPath := ""
 
 	if len(segments) > 1 {

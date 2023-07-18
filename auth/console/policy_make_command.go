@@ -7,6 +7,7 @@ import (
 	"strings"
 
 	"github.com/gookit/color"
+	"github.com/mewway/go-laravel/support"
 
 	"github.com/mewway/go-laravel/contracts/console"
 	"github.com/mewway/go-laravel/contracts/console/command"
@@ -74,7 +75,7 @@ func (receiver *PolicyMakeCommand) getPath(name string) string {
 
 	policyName, _, folderPath := receiver.parseName(name)
 
-	return filepath.Join(pwd, "app", "policies", folderPath, str.Camel2Case(policyName)+".go")
+	return filepath.Join(pwd, support.DirApp, support.DirPolicy, folderPath, str.Camel2Case(policyName)+".go")
 }
 
 // parseName Parse the name to get the policy name, package name and folder path.
@@ -85,7 +86,7 @@ func (receiver *PolicyMakeCommand) parseName(name string) (string, string, strin
 
 	policyName := segments[len(segments)-1]
 
-	packageName := "policies"
+	packageName := support.DirPolicy
 	folderPath := ""
 
 	if len(segments) > 1 {

@@ -7,6 +7,7 @@ import (
 	"strings"
 
 	"github.com/gookit/color"
+	"github.com/mewway/go-laravel/support"
 
 	"github.com/mewway/go-laravel/contracts/console"
 	"github.com/mewway/go-laravel/contracts/console/command"
@@ -70,7 +71,7 @@ func (receiver *MiddlewareMakeCommand) getPath(name string) string {
 
 	middlewareName, _, folderPath := receiver.parseName(name)
 
-	return filepath.Join(pwd, "app", "http", "middleware", folderPath, str.Camel2Case(middlewareName)+".go")
+	return filepath.Join(pwd, support.DirApp, support.DirMiddleware, folderPath, str.Camel2Case(middlewareName)+".go")
 }
 
 // parseName Parse the name to get the middleware name, package name and folder path.
@@ -81,7 +82,7 @@ func (receiver *MiddlewareMakeCommand) parseName(name string) (string, string, s
 
 	middlewareName := segments[len(segments)-1]
 
-	packageName := "middleware"
+	packageName := support.DirMiddleware
 	folderPath := ""
 
 	if len(segments) > 1 {

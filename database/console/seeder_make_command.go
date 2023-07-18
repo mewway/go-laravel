@@ -6,6 +6,7 @@ import (
 	"strings"
 
 	"github.com/gookit/color"
+	"github.com/mewway/go-laravel/support"
 
 	"github.com/mewway/go-laravel/contracts/console"
 	"github.com/mewway/go-laravel/contracts/console/command"
@@ -75,7 +76,7 @@ func (receiver *SeederMakeCommand) getPath(name string) string {
 
 	modelName, _, folderPath := receiver.parseName(name)
 
-	return filepath.Join(pwd, "database", "seeders", folderPath, str.Camel2Case(modelName)+".go")
+	return filepath.Join(pwd, support.DirDatabase, support.DirSeeder, folderPath, str.Camel2Case(modelName)+".go")
 }
 
 // parseName Parse the name to get the model name, package name and folder path.
@@ -86,7 +87,7 @@ func (receiver *SeederMakeCommand) parseName(name string) (string, string, strin
 
 	modelName := segments[len(segments)-1]
 
-	packageName := "seeders"
+	packageName := support.DirSeeder
 	folderPath := ""
 
 	if len(segments) > 1 {

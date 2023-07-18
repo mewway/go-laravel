@@ -7,6 +7,7 @@ import (
 	"strings"
 
 	"github.com/gookit/color"
+	"github.com/mewway/go-laravel/support"
 
 	"github.com/mewway/go-laravel/contracts/console"
 	"github.com/mewway/go-laravel/contracts/console/command"
@@ -86,7 +87,7 @@ func (receiver *ControllerMakeCommand) getPath(name string) string {
 
 	controllerName, _, folderPath := receiver.parseName(name)
 
-	return filepath.Join(pwd, "app", "http", "controllers", folderPath, str.Camel2Case(controllerName)+".go")
+	return filepath.Join(pwd, support.DirApp, support.DirController, folderPath, str.Camel2Case(controllerName)+".go")
 }
 
 // parseName Parse the name to get the controller name, package name and folder path.
@@ -97,7 +98,7 @@ func (receiver *ControllerMakeCommand) parseName(name string) (string, string, s
 
 	controllerName := segments[len(segments)-1]
 
-	packageName := "controllers"
+	packageName := support.DirController
 	folderPath := ""
 
 	if len(segments) > 1 {

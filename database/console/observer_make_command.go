@@ -6,6 +6,7 @@ import (
 	"strings"
 
 	"github.com/gookit/color"
+	"github.com/mewway/go-laravel/support"
 
 	"github.com/mewway/go-laravel/contracts/console"
 	"github.com/mewway/go-laravel/contracts/console/command"
@@ -75,7 +76,7 @@ func (receiver *ObserverMakeCommand) getPath(name string) string {
 
 	observerName, _, folderPath := receiver.parseName(name)
 
-	return filepath.Join(pwd, "app", "observers", folderPath, str.Camel2Case(observerName)+".go")
+	return filepath.Join(pwd, support.DirApp, support.DirObserver, folderPath, str.Camel2Case(observerName)+".go")
 }
 
 // parseName Parse the name to get the observer name, package name and folder path.
@@ -86,7 +87,7 @@ func (receiver *ObserverMakeCommand) parseName(name string) (string, string, str
 
 	observerName := segments[len(segments)-1]
 
-	packageName := "observers"
+	packageName := support.DirObserver
 	folderPath := ""
 
 	if len(segments) > 1 {

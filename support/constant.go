@@ -9,6 +9,26 @@ const (
 	EnvTest    = "test"
 )
 
+const (
+	DirApp        = "app"
+	DirPolicy     = "policy"
+	DirModel      = "model"
+	DirDatabase   = "database"
+	DirMigration  = "migration"
+	DirObserver   = "observer"
+	DirController = "controller"
+	DirCommand    = "console"
+	DirListener   = "listener"
+	DirEvent      = "event"
+	DirJob        = "job"
+	DirRule       = "rule"
+	DirSeeder     = "seeder"
+	DirGrpc       = "grpc"
+	DirConfig     = "config"
+	DirMiddleware = "middleware"
+	DirRequest    = "request"
+)
+
 var (
 	Env      = EnvRuntime
 	EnvPath  = ".env"

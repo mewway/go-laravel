@@ -8,6 +8,7 @@ import (
 
 	"github.com/mewway/go-laravel/contracts/console"
 	"github.com/mewway/go-laravel/contracts/console/command"
+	"github.com/mewway/go-laravel/support"
 	"github.com/mewway/go-laravel/support/file"
 	"github.com/mewway/go-laravel/support/str"
 
@@ -71,7 +72,7 @@ func (receiver *RuleMakeCommand) getPath(name string) string {
 
 	ruleName, _, folderPath := receiver.parseName(name)
 
-	return filepath.Join(pwd, "app", "rules", folderPath, str.Camel2Case(ruleName)+".go")
+	return filepath.Join(pwd, support.DirApp, support.DirRule, folderPath, str.Camel2Case(ruleName)+".go")
 }
 
 // parseName Parse the name to get the rule name, package name and folder path.
@@ -82,7 +83,7 @@ func (receiver *RuleMakeCommand) parseName(name string) (string, string, string)
 
 	ruleName := segments[len(segments)-1]
 
-	packageName := "rules"
+	packageName := support.DirRule
 	folderPath := ""
 
 	if len(segments) > 1 {

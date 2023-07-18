@@ -7,6 +7,7 @@ import (
 	"strings"
 
 	"github.com/gookit/color"
+	"github.com/mewway/go-laravel/support"
 
 	"github.com/mewway/go-laravel/contracts/console"
 	"github.com/mewway/go-laravel/contracts/console/command"
@@ -71,7 +72,7 @@ func (receiver *ListenerMakeCommand) getPath(name string) string {
 
 	listenerName, _, folderPath := receiver.parseName(name)
 
-	return filepath.Join(pwd, "app", "listeners", folderPath, str.Camel2Case(listenerName)+".go")
+	return filepath.Join(pwd, support.DirApp, support.DirListener, folderPath, str.Camel2Case(listenerName)+".go")
 }
 
 // parseName Parse the name to get the listener name, package name and folder path.
@@ -82,7 +83,7 @@ func (receiver *ListenerMakeCommand) parseName(name string) (string, string, str
 
 	listenerName := segments[len(segments)-1]
 
-	packageName := "listeners"
+	packageName := support.DirListener
 	folderPath := ""
 
 	if len(segments) > 1 {

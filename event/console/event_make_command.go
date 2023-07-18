@@ -7,6 +7,7 @@ import (
 	"strings"
 
 	"github.com/gookit/color"
+	"github.com/mewway/go-laravel/support"
 
 	"github.com/mewway/go-laravel/contracts/console"
 	"github.com/mewway/go-laravel/contracts/console/command"
@@ -69,7 +70,7 @@ func (receiver *EventMakeCommand) getPath(name string) string {
 
 	eventName, _, folderPath := receiver.parseName(name)
 
-	return filepath.Join(pwd, "app", "events", folderPath, str.Camel2Case(eventName)+".go")
+	return filepath.Join(pwd, support.DirApp, support.DirEvent, folderPath, str.Camel2Case(eventName)+".go")
 }
 
 // parseName Parse the name to get the event name, package name and folder path.
@@ -80,7 +81,7 @@ func (receiver *EventMakeCommand) parseName(name string) (string, string, string
 
 	eventName := segments[len(segments)-1]
 
-	packageName := "events"
+	packageName := support.DirEvent
 	folderPath := ""
 
 	if len(segments) > 1 {
