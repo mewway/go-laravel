@@ -1,10 +1,11 @@
 package support
 
-const Version string = "v1.12.5"
+const Version string = "v1.0.0"
 
 const (
 	EnvRuntime = "runtime"
 	EnvArtisan = "july"
+	CliAppName = "Cicada July Skeleton"
 	EnvTest    = "test"
 )
 

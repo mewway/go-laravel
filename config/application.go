@@ -1,6 +1,7 @@
 package config
 
 import (
+	"fmt"
 	"os"
 
 	"github.com/gookit/color"
@@ -39,6 +40,7 @@ func NewApplication(envPath string) *Application {
 	app.vip.AutomaticEnv()
 
 	appKey := app.Env("APP_KEY")
+	fmt.Println(appKey, support.Env, support.EnvArtisan)
 	if support.Env != support.EnvArtisan {
 		if appKey == nil {
 			color.Redln("Please initialize APP_KEY first.")

@@ -18,7 +18,7 @@ type Application struct {
 
 func NewApplication() console.Artisan {
 	instance := cli.NewApp()
-	instance.Name = " Framework"
+	instance.Name = support.CliAppName
 	instance.Usage = support.Version
 	instance.UsageText = support.EnvArtisan + " [global options] command [options] [arguments...]"
 

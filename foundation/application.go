@@ -176,7 +176,7 @@ func setEnv() {
 	}
 	if len(args) >= 2 {
 		for _, arg := range args[1:] {
-			if arg == "artisan" {
+			if arg == support.EnvArtisan {
 				support.Env = support.EnvArtisan
 				break
 			}

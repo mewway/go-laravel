@@ -14,8 +14,8 @@ import (
 
 func TestKeyGenerateCommand(t *testing.T) {
 	mockConfig := &configmock.Config{}
-	mockConfig.On("GetString", "app.env").Return("local").Twice()
-	mockConfig.On("GetString", "app.key").Return("12345").Once()
+	mockConfig.On("GetString", "app.env").Return("local")
+	mockConfig.On("GetString", "app.key").Return("")
 
 	keyGenerateCommand := NewKeyGenerateCommand(mockConfig)
 	mockContext := &consolemocks.Context{}
@@ -24,7 +24,7 @@ func TestKeyGenerateCommand(t *testing.T) {
 
 	assert.Nil(t, keyGenerateCommand.Handle(mockContext))
 
-	err := file.Create(".env", "APP_KEY=12345\n")
+	err := file.Create(".env", "APP_KEY=\n")
 	assert.Nil(t, err)
 
 	assert.Nil(t, keyGenerateCommand.Handle(mockContext))
