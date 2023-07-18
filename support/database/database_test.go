@@ -5,7 +5,7 @@ import (
 	"testing"
 
 	"github.com/google/uuid"
-	"github.com/goravel/framework/database/orm"
+	"github.com/mewway/go-laravel/database/orm"
 
 	"github.com/stretchr/testify/assert"
 )

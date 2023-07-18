@@ -5,7 +5,7 @@ package mocks
 import (
 	context "context"
 
-	cache "github.com/goravel/framework/contracts/cache"
+	cache "github.com/mewway/go-laravel/contracts/cache"
 
 	mock "github.com/stretchr/testify/mock"
 

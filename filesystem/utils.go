@@ -4,8 +4,8 @@ import (
 	"path/filepath"
 	"strings"
 
-	"github.com/goravel/framework/contracts/filesystem"
-	"github.com/goravel/framework/support/file"
+	"github.com/mewway/go-laravel/contracts/filesystem"
+	"github.com/mewway/go-laravel/support/file"
 )
 
 func fullPathOfFile(filePath string, source filesystem.File, name string) (string, error) {

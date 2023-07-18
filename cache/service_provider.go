@@ -1,9 +1,9 @@
 package cache
 
 import (
-	"github.com/goravel/framework/cache/console"
-	contractsconsole "github.com/goravel/framework/contracts/console"
-	"github.com/goravel/framework/contracts/foundation"
+	"github.com/mewway/go-laravel/cache/console"
+	contractsconsole "github.com/mewway/go-laravel/contracts/console"
+	"github.com/mewway/go-laravel/contracts/foundation"
 )
 
 const Binding = "cicada.cache"

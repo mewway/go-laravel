@@ -6,9 +6,9 @@ import (
 
 	"github.com/sirupsen/logrus"
 
-	"github.com/goravel/framework/contracts/config"
-	"github.com/goravel/framework/contracts/log"
-	"github.com/goravel/framework/log/logger"
+	"github.com/mewway/go-laravel/contracts/config"
+	"github.com/mewway/go-laravel/contracts/log"
+	"github.com/mewway/go-laravel/log/logger"
 )
 
 type Writer struct {

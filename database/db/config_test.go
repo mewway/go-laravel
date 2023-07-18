@@ -6,8 +6,8 @@ import (
 
 	"github.com/stretchr/testify/suite"
 
-	configmock "github.com/goravel/framework/contracts/config/mocks"
-	databasecontract "github.com/goravel/framework/contracts/database"
+	configmock "github.com/mewway/go-laravel/contracts/config/mocks"
+	databasecontract "github.com/mewway/go-laravel/contracts/database"
 )
 
 type ConfigTestSuite struct {

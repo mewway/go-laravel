@@ -1,7 +1,7 @@
 package facades
 
 import (
-	"github.com/goravel/framework/contracts/route"
+	"github.com/mewway/go-laravel/contracts/route"
 )
 
 func Route() route.Engine {

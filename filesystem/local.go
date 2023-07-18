@@ -9,10 +9,10 @@ import (
 	"strings"
 	"time"
 
-	"github.com/goravel/framework/contracts/config"
-	"github.com/goravel/framework/contracts/filesystem"
-	supportfile "github.com/goravel/framework/support/file"
-	"github.com/goravel/framework/support/str"
+	"github.com/mewway/go-laravel/contracts/config"
+	"github.com/mewway/go-laravel/contracts/filesystem"
+	supportfile "github.com/mewway/go-laravel/support/file"
+	"github.com/mewway/go-laravel/support/str"
 )
 
 type Local struct {

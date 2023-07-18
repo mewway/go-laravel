@@ -8,11 +8,11 @@ import (
 	"github.com/stretchr/testify/mock"
 	"github.com/stretchr/testify/suite"
 
-	cachemocks "github.com/goravel/framework/contracts/cache/mocks"
-	consolemocks "github.com/goravel/framework/contracts/console/mocks"
-	logmocks "github.com/goravel/framework/contracts/log/mocks"
-	"github.com/goravel/framework/contracts/schedule"
-	"github.com/goravel/framework/support/carbon"
+	cachemocks "github.com/mewway/go-laravel/contracts/cache/mocks"
+	consolemocks "github.com/mewway/go-laravel/contracts/console/mocks"
+	logmocks "github.com/mewway/go-laravel/contracts/log/mocks"
+	"github.com/mewway/go-laravel/contracts/schedule"
+	"github.com/mewway/go-laravel/support/carbon"
 )
 
 type ApplicationTestSuite struct {

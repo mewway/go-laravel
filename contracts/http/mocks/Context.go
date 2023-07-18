@@ -5,7 +5,7 @@ package mocks
 import (
 	context "context"
 
-	http "github.com/goravel/framework/contracts/http"
+	http "github.com/mewway/go-laravel/contracts/http"
 	mock "github.com/stretchr/testify/mock"
 
 	time "time"

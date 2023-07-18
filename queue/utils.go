@@ -4,8 +4,8 @@ import (
 	"errors"
 	"fmt"
 
-	"github.com/goravel/framework/contracts/event"
-	"github.com/goravel/framework/contracts/queue"
+	"github.com/mewway/go-laravel/contracts/event"
+	"github.com/mewway/go-laravel/contracts/queue"
 )
 
 func jobs2Tasks(jobs []queue.Job) (map[string]any, error) {

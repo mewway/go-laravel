@@ -3,7 +3,7 @@ package route
 import (
 	"net/http"
 
-	contractshttp "github.com/goravel/framework/contracts/http"
+	contractshttp "github.com/mewway/go-laravel/contracts/http"
 )
 
 type GroupFunc func(routes Route)

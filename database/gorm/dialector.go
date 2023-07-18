@@ -10,10 +10,10 @@ import (
 	"gorm.io/driver/sqlserver"
 	"gorm.io/gorm"
 
-	"github.com/goravel/framework/contracts/config"
-	databasecontract "github.com/goravel/framework/contracts/database"
-	"github.com/goravel/framework/contracts/database/orm"
-	"github.com/goravel/framework/database/db"
+	"github.com/mewway/go-laravel/contracts/config"
+	databasecontract "github.com/mewway/go-laravel/contracts/database"
+	"github.com/mewway/go-laravel/contracts/database/orm"
+	"github.com/mewway/go-laravel/database/db"
 )
 
 var DialectorSet = wire.NewSet(NewDialectorImpl, wire.Bind(new(Dialector), new(*DialectorImpl)))

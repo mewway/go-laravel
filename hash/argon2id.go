@@ -9,7 +9,7 @@ import (
 
 	"golang.org/x/crypto/argon2"
 
-	"github.com/goravel/framework/contracts/config"
+	"github.com/mewway/go-laravel/contracts/config"
 )
 
 type Argon2id struct {

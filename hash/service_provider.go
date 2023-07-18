@@ -1,7 +1,7 @@
 package hash
 
 import (
-	"github.com/goravel/framework/contracts/foundation"
+	"github.com/mewway/go-laravel/contracts/foundation"
 )
 
 const Binding = "cicada.hash"

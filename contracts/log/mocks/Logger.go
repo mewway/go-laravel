@@ -3,7 +3,7 @@
 package mocks
 
 import (
-	log "github.com/goravel/framework/contracts/log"
+	log "github.com/mewway/go-laravel/contracts/log"
 	mock "github.com/stretchr/testify/mock"
 )
 

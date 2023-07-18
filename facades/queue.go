@@ -1,7 +1,7 @@
 package facades
 
 import (
-	"github.com/goravel/framework/contracts/queue"
+	"github.com/mewway/go-laravel/contracts/queue"
 )
 
 func Queue() queue.Queue {

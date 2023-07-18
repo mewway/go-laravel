@@ -8,10 +8,10 @@ import (
 	"github.com/gookit/color"
 	"github.com/pkg/errors"
 
-	"github.com/goravel/framework/contracts/config"
-	ormcontract "github.com/goravel/framework/contracts/database/orm"
-	databasegorm "github.com/goravel/framework/database/gorm"
-	"github.com/goravel/framework/database/orm"
+	"github.com/mewway/go-laravel/contracts/config"
+	ormcontract "github.com/mewway/go-laravel/contracts/database/orm"
+	databasegorm "github.com/mewway/go-laravel/database/gorm"
+	"github.com/mewway/go-laravel/database/orm"
 )
 
 type OrmImpl struct {

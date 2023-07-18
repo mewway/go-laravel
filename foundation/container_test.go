@@ -6,7 +6,7 @@ import (
 
 	"github.com/stretchr/testify/suite"
 
-	"github.com/goravel/framework/contracts/foundation"
+	"github.com/mewway/go-laravel/contracts/foundation"
 )
 
 type ContainerTestSuite struct {

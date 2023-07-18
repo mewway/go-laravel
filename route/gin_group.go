@@ -5,8 +5,8 @@ import (
 
 	"github.com/gin-gonic/gin"
 
-	httpcontract "github.com/goravel/framework/contracts/http"
-	"github.com/goravel/framework/contracts/route"
+	httpcontract "github.com/mewway/go-laravel/contracts/http"
+	"github.com/mewway/go-laravel/contracts/route"
 )
 
 type GinGroup struct {

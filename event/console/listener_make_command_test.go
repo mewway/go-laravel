@@ -5,8 +5,8 @@ import (
 
 	"github.com/stretchr/testify/assert"
 
-	consolemocks "github.com/goravel/framework/contracts/console/mocks"
-	"github.com/goravel/framework/support/file"
+	consolemocks "github.com/mewway/go-laravel/contracts/console/mocks"
+	"github.com/mewway/go-laravel/support/file"
 )
 
 func TestListenerMakeCommand(t *testing.T) {

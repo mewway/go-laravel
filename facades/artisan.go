@@ -1,7 +1,7 @@
 package facades
 
 import (
-	"github.com/goravel/framework/contracts/console"
+	"github.com/mewway/go-laravel/contracts/console"
 )
 
 func Artisan() console.Artisan {

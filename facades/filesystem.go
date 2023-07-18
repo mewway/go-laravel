@@ -1,6 +1,6 @@
 package facades
 
-import "github.com/goravel/framework/contracts/filesystem"
+import "github.com/mewway/go-laravel/contracts/filesystem"
 
 func Storage() filesystem.Storage {
 	return App().MakeStorage()

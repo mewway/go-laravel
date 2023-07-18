@@ -6,9 +6,9 @@ import (
 
 	"github.com/stretchr/testify/assert"
 
-	"github.com/goravel/framework/contracts/event"
-	queuecontract "github.com/goravel/framework/contracts/queue"
-	queuemock "github.com/goravel/framework/contracts/queue/mocks"
+	"github.com/mewway/go-laravel/contracts/event"
+	queuecontract "github.com/mewway/go-laravel/contracts/queue"
+	queuemock "github.com/mewway/go-laravel/contracts/queue/mocks"
 )
 
 func TestDispatch(t *testing.T) {

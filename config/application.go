@@ -7,9 +7,9 @@ import (
 	"github.com/spf13/cast"
 	"github.com/spf13/viper"
 
-	"github.com/goravel/framework/contracts/config"
-	"github.com/goravel/framework/support"
-	"github.com/goravel/framework/support/file"
+	"github.com/mewway/go-laravel/contracts/config"
+	"github.com/mewway/go-laravel/support"
+	"github.com/mewway/go-laravel/support/file"
 )
 
 var _ config.Config = &Application{}
@@ -21,7 +21,7 @@ type Application struct {
 func NewApplication(envPath string) *Application {
 	if !file.Exists(envPath) {
 		color.Redln("Please create " + envPath + " and initialize it first.")
-		color.Warnln("Example command: \ncp .env.sample .env && go run . artisan key:generate")
+		color.Warnln("Example command: \ncp .env.sample .env && go run . " + support.EnvArtisan + " key:generate")
 		os.Exit(0)
 	}
 
@@ -42,13 +42,13 @@ func NewApplication(envPath string) *Application {
 	if support.Env != support.EnvArtisan {
 		if appKey == nil {
 			color.Redln("Please initialize APP_KEY first.")
-			color.Warnln("Example command: \ngo run . artisan key:generate")
+			color.Warnln("Example command: \ngo run . " + support.EnvArtisan + " key:generate")
 			os.Exit(0)
 		}
 
 		if len(appKey.(string)) != 32 {
 			color.Redln("Invalid APP_KEY, please reset it.")
-			color.Warnln("Example command: \ngo run . artisan key:generate")
+			color.Warnln("Example command: \ngo run . " + support.EnvArtisan + " key:generate")
 			os.Exit(0)
 		}
 	}

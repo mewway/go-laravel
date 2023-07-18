@@ -7,7 +7,7 @@ import (
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/suite"
 
-	"github.com/goravel/framework/support/file"
+	"github.com/mewway/go-laravel/support/file"
 )
 
 type ApplicationTestSuite struct {

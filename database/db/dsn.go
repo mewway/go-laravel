@@ -3,8 +3,8 @@ package db
 import (
 	"fmt"
 
-	"github.com/goravel/framework/contracts/config"
-	databasecontract "github.com/goravel/framework/contracts/database"
+	"github.com/mewway/go-laravel/contracts/config"
+	databasecontract "github.com/mewway/go-laravel/contracts/database"
 )
 
 type Dsn interface {

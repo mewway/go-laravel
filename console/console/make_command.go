@@ -6,11 +6,11 @@ import (
 	"path/filepath"
 	"strings"
 
-	console2 "github.com/goravel/framework/console"
-	"github.com/goravel/framework/contracts/console"
-	"github.com/goravel/framework/contracts/console/command"
-	"github.com/goravel/framework/support/file"
-	"github.com/goravel/framework/support/str"
+	"github.com/mewway/go-laravel/contracts/console"
+	"github.com/mewway/go-laravel/contracts/console/command"
+	"github.com/mewway/go-laravel/support"
+	"github.com/mewway/go-laravel/support/file"
+	"github.com/mewway/go-laravel/support/str"
 )
 
 type MakeCommand struct {
@@ -27,7 +27,7 @@ func (receiver *MakeCommand) Signature() string {
 
 // Description The console command description.
 func (receiver *MakeCommand) Description() string {
-	return "Create a new " + console2.CliAppName + " command"
+	return "Create a new " + support.EnvArtisan + " command"
 }
 
 // Extend The console command extend.

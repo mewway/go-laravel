@@ -12,8 +12,8 @@ import (
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/suite"
 
-	configmock "github.com/goravel/framework/contracts/config/mocks"
-	"github.com/goravel/framework/support/file"
+	configmock "github.com/mewway/go-laravel/contracts/config/mocks"
+	"github.com/mewway/go-laravel/support/file"
 )
 
 type FileTestSuite struct {

@@ -1,6 +1,6 @@
 package facades
 
-import "github.com/goravel/framework/contracts/event"
+import "github.com/mewway/go-laravel/contracts/event"
 
 func Event() event.Instance {
 	return App().MakeEvent()

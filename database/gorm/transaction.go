@@ -3,7 +3,7 @@ package gorm
 import (
 	"gorm.io/gorm"
 
-	"github.com/goravel/framework/contracts/database/orm"
+	"github.com/mewway/go-laravel/contracts/database/orm"
 )
 
 type Transaction struct {

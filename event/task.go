@@ -3,8 +3,8 @@ package event
 import (
 	"fmt"
 
-	"github.com/goravel/framework/contracts/event"
-	queuecontract "github.com/goravel/framework/contracts/queue"
+	"github.com/mewway/go-laravel/contracts/event"
+	queuecontract "github.com/mewway/go-laravel/contracts/queue"
 )
 
 type Task struct {

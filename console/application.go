@@ -7,12 +7,10 @@ import (
 	"github.com/gookit/color"
 	"github.com/urfave/cli/v2"
 
-	"github.com/goravel/framework/contracts/console"
-	"github.com/goravel/framework/contracts/console/command"
-	"github.com/goravel/framework/support"
+	"github.com/mewway/go-laravel/contracts/console"
+	"github.com/mewway/go-laravel/contracts/console/command"
+	"github.com/mewway/go-laravel/support"
 )
-
-const CliAppName = "july"
 
 type Application struct {
 	instance *cli.App
@@ -22,7 +20,7 @@ func NewApplication() console.Artisan {
 	instance := cli.NewApp()
 	instance.Name = " Framework"
 	instance.Usage = support.Version
-	instance.UsageText = CliAppName + " [global options] command [options] [arguments...]"
+	instance.UsageText = support.EnvArtisan + " [global options] command [options] [arguments...]"
 
 	return &Application{instance}
 }
@@ -46,19 +44,19 @@ func (c *Application) Register(commands []console.Command) {
 
 // Call Run an Artisan console command by name.
 func (c *Application) Call(command string) {
-	c.Run(append([]string{os.Args[0], CliAppName}, strings.Split(command, " ")...), false)
+	c.Run(append([]string{os.Args[0], support.EnvArtisan}, strings.Split(command, " ")...), false)
 }
 
 // CallAndExit Run an Artisan console command by name and exit.
 func (c *Application) CallAndExit(command string) {
-	c.Run(append([]string{os.Args[0], CliAppName}, strings.Split(command, " ")...), true)
+	c.Run(append([]string{os.Args[0], support.EnvArtisan}, strings.Split(command, " ")...), true)
 }
 
 // Run a command. Args come from os.Args.
 func (c *Application) Run(args []string, exitIfArtisan bool) {
 	artisanIndex := -1
 	for i, arg := range args {
-		if arg == CliAppName {
+		if arg == support.EnvArtisan {
 			artisanIndex = i
 			break
 		}

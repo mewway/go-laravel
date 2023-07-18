@@ -3,9 +3,9 @@ package console
 import (
 	"github.com/gookit/color"
 
-	"github.com/goravel/framework/contracts/config"
-	"github.com/goravel/framework/contracts/console"
-	"github.com/goravel/framework/contracts/console/command"
+	"github.com/mewway/go-laravel/contracts/config"
+	"github.com/mewway/go-laravel/contracts/console"
+	"github.com/mewway/go-laravel/contracts/console/command"
 )
 
 type MigrateMakeCommand struct {
@@ -50,7 +50,7 @@ func (receiver *MigrateMakeCommand) Handle(ctx console.Context) error {
 	// of creating migrations that create new tables for the application.
 	table, create := TableGuesser{}.Guess(name)
 
-	//Write the migration file to disk.
+	// Write the migration file to disk.
 	migrateCreator := NewMigrateCreator(receiver.config)
 	if err := migrateCreator.Create(name, table, create); err != nil {
 		return err

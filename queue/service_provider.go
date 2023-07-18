@@ -1,9 +1,9 @@
 package queue
 
 import (
-	"github.com/goravel/framework/contracts/console"
-	"github.com/goravel/framework/contracts/foundation"
-	queueConsole "github.com/goravel/framework/queue/console"
+	"github.com/mewway/go-laravel/contracts/console"
+	"github.com/mewway/go-laravel/contracts/foundation"
+	queueConsole "github.com/mewway/go-laravel/queue/console"
 )
 
 const Binding = "cicada.queue"

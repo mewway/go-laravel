@@ -3,7 +3,7 @@
 package mocks
 
 import (
-	http "github.com/goravel/framework/contracts/http"
+	http "github.com/mewway/go-laravel/contracts/http"
 	mock "github.com/stretchr/testify/mock"
 
 	nethttp "net/http"

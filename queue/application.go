@@ -1,8 +1,8 @@
 package queue
 
 import (
-	configcontract "github.com/goravel/framework/contracts/config"
-	"github.com/goravel/framework/contracts/queue"
+	configcontract "github.com/mewway/go-laravel/contracts/config"
+	"github.com/mewway/go-laravel/contracts/queue"
 )
 
 type Application struct {

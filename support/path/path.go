@@ -1,7 +1,7 @@
 package path
 
 import (
-	"github.com/goravel/framework/facades"
+	"github.com/mewway/go-laravel/facades"
 )
 
 func App(paths ...string) string {

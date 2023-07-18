@@ -5,7 +5,7 @@ import (
 
 	"github.com/stretchr/testify/assert"
 
-	"github.com/goravel/framework/support/file"
+	"github.com/mewway/go-laravel/support/file"
 )
 
 func TestMysqlDocker(t *testing.T) {

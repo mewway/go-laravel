@@ -7,7 +7,7 @@ func (r Stubs) Model() string {
 	return `package DummyPackage
 
 import (
-	"github.com/goravel/framework/database/orm"
+	"github.com/mewway/go-laravel/database/orm"
 )
 
 type DummyModel struct {
@@ -20,7 +20,7 @@ func (r Stubs) Observer() string {
 	return `package DummyPackage
 
 import (
-	"github.com/goravel/framework/contracts/database/orm"
+	"github.com/mewway/go-laravel/contracts/database/orm"
 )
 
 

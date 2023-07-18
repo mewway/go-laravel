@@ -6,8 +6,8 @@ import (
 	"github.com/gin-gonic/gin"
 	"github.com/rs/cors"
 
-	httpcontract "github.com/goravel/framework/contracts/http"
-	"github.com/goravel/framework/http"
+	httpcontract "github.com/mewway/go-laravel/contracts/http"
+	"github.com/mewway/go-laravel/http"
 )
 
 func Cors() httpcontract.Middleware {

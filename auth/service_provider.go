@@ -3,10 +3,10 @@ package auth
 import (
 	"context"
 
-	"github.com/goravel/framework/auth/access"
-	"github.com/goravel/framework/auth/console"
-	contractconsole "github.com/goravel/framework/contracts/console"
-	"github.com/goravel/framework/contracts/foundation"
+	"github.com/mewway/go-laravel/auth/access"
+	"github.com/mewway/go-laravel/auth/console"
+	contractconsole "github.com/mewway/go-laravel/contracts/console"
+	"github.com/mewway/go-laravel/contracts/foundation"
 )
 
 const BindingAuth = "cicada.auth"

@@ -1,14 +1,14 @@
 package http
 
 import (
-	"github.com/goravel/framework/contracts/cache"
-	"github.com/goravel/framework/contracts/config"
-	consolecontract "github.com/goravel/framework/contracts/console"
-	"github.com/goravel/framework/contracts/foundation"
-	"github.com/goravel/framework/contracts/http"
-	"github.com/goravel/framework/contracts/log"
-	"github.com/goravel/framework/contracts/validation"
-	"github.com/goravel/framework/http/console"
+	"github.com/mewway/go-laravel/contracts/cache"
+	"github.com/mewway/go-laravel/contracts/config"
+	consolecontract "github.com/mewway/go-laravel/contracts/console"
+	"github.com/mewway/go-laravel/contracts/foundation"
+	"github.com/mewway/go-laravel/contracts/http"
+	"github.com/mewway/go-laravel/contracts/log"
+	"github.com/mewway/go-laravel/contracts/validation"
+	"github.com/mewway/go-laravel/http/console"
 )
 
 const Binding = "cicada.http"

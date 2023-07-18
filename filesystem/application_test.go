@@ -10,10 +10,10 @@ import (
 	"github.com/gookit/color"
 	"github.com/stretchr/testify/assert"
 
-	configmocks "github.com/goravel/framework/contracts/config/mocks"
-	"github.com/goravel/framework/contracts/filesystem"
-	"github.com/goravel/framework/support/carbon"
-	"github.com/goravel/framework/support/file"
+	configmocks "github.com/mewway/go-laravel/contracts/config/mocks"
+	"github.com/mewway/go-laravel/contracts/filesystem"
+	"github.com/mewway/go-laravel/support/carbon"
+	"github.com/mewway/go-laravel/support/file"
 )
 
 type TestDisk struct {

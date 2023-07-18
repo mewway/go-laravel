@@ -1,8 +1,8 @@
 package facades
 
 import (
-	"github.com/goravel/framework/contracts/auth"
-	"github.com/goravel/framework/contracts/auth/access"
+	"github.com/mewway/go-laravel/contracts/auth"
+	"github.com/mewway/go-laravel/contracts/auth/access"
 )
 
 func Auth() auth.Auth {

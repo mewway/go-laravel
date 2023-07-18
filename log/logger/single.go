@@ -6,8 +6,8 @@ import (
 	"github.com/rifflock/lfshook"
 	"github.com/sirupsen/logrus"
 
-	"github.com/goravel/framework/contracts/config"
-	"github.com/goravel/framework/log/formatter"
+	"github.com/mewway/go-laravel/contracts/config"
+	"github.com/mewway/go-laravel/log/formatter"
 )
 
 type Single struct {

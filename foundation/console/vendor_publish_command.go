@@ -9,9 +9,9 @@ import (
 
 	"github.com/gookit/color"
 
-	"github.com/goravel/framework/contracts/console"
-	"github.com/goravel/framework/contracts/console/command"
-	"github.com/goravel/framework/support/file"
+	"github.com/mewway/go-laravel/contracts/console"
+	"github.com/mewway/go-laravel/contracts/console/command"
+	"github.com/mewway/go-laravel/support/file"
 )
 
 type VendorPublishCommand struct {

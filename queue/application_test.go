@@ -10,11 +10,11 @@ import (
 	"github.com/spf13/cast"
 	"github.com/stretchr/testify/suite"
 
-	configmock "github.com/goravel/framework/contracts/config/mocks"
-	"github.com/goravel/framework/contracts/queue"
-	queuemock "github.com/goravel/framework/contracts/queue/mocks"
-	"github.com/goravel/framework/support/carbon"
-	testingdocker "github.com/goravel/framework/testing/docker"
+	configmock "github.com/mewway/go-laravel/contracts/config/mocks"
+	"github.com/mewway/go-laravel/contracts/queue"
+	queuemock "github.com/mewway/go-laravel/contracts/queue/mocks"
+	"github.com/mewway/go-laravel/support/carbon"
+	testingdocker "github.com/mewway/go-laravel/testing/docker"
 )
 
 var (

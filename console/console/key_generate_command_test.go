@@ -6,10 +6,10 @@ import (
 
 	"github.com/stretchr/testify/assert"
 
-	configmock "github.com/goravel/framework/contracts/config/mocks"
-	consolemocks "github.com/goravel/framework/contracts/console/mocks"
-	"github.com/goravel/framework/support"
-	"github.com/goravel/framework/support/file"
+	configmock "github.com/mewway/go-laravel/contracts/config/mocks"
+	consolemocks "github.com/mewway/go-laravel/contracts/console/mocks"
+	"github.com/mewway/go-laravel/support"
+	"github.com/mewway/go-laravel/support/file"
 )
 
 func TestKeyGenerateCommand(t *testing.T) {

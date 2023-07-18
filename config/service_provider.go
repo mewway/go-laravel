@@ -1,8 +1,8 @@
 package config
 
 import (
-	"github.com/goravel/framework/contracts/foundation"
-	"github.com/goravel/framework/support"
+	"github.com/mewway/go-laravel/contracts/foundation"
+	"github.com/mewway/go-laravel/support"
 )
 
 const Binding = "cicada.config"

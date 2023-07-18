@@ -13,10 +13,10 @@ import (
 	"github.com/stretchr/testify/suite"
 	_ "gorm.io/driver/postgres"
 
-	ormcontract "github.com/goravel/framework/contracts/database/orm"
-	databasedb "github.com/goravel/framework/database/db"
-	"github.com/goravel/framework/database/orm"
-	"github.com/goravel/framework/support/file"
+	ormcontract "github.com/mewway/go-laravel/contracts/database/orm"
+	databasedb "github.com/mewway/go-laravel/database/db"
+	"github.com/mewway/go-laravel/database/orm"
+	"github.com/mewway/go-laravel/support/file"
 )
 
 type contextKey int

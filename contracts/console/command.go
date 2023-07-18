@@ -1,17 +1,17 @@
 package console
 
 import (
-	"github.com/goravel/framework/contracts/console/command"
+	"github.com/mewway/go-laravel/contracts/console/command"
 )
 
 type Command interface {
-	//Signature The name and signature of the console command.
+	// Signature The name and signature of the console command.
 	Signature() string
-	//Description The console command description.
+	// Description The console command description.
 	Description() string
-	//Extend The console command extend.
+	// Extend The console command extend.
 	Extend() command.Extend
-	//Handle Execute the console command.
+	// Handle Execute the console command.
 	Handle(ctx Context) error
 }
 

@@ -14,12 +14,12 @@ import (
 	"github.com/gookit/validate"
 	"github.com/spf13/cast"
 
-	filesystemcontract "github.com/goravel/framework/contracts/filesystem"
-	httpcontract "github.com/goravel/framework/contracts/http"
-	"github.com/goravel/framework/contracts/log"
-	validatecontract "github.com/goravel/framework/contracts/validation"
-	"github.com/goravel/framework/filesystem"
-	"github.com/goravel/framework/validation"
+	filesystemcontract "github.com/mewway/go-laravel/contracts/filesystem"
+	httpcontract "github.com/mewway/go-laravel/contracts/http"
+	"github.com/mewway/go-laravel/contracts/log"
+	validatecontract "github.com/mewway/go-laravel/contracts/validation"
+	"github.com/mewway/go-laravel/filesystem"
+	"github.com/mewway/go-laravel/validation"
 )
 
 const DefaultMemory = 32 << 20

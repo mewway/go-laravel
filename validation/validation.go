@@ -7,8 +7,8 @@ import (
 
 	"github.com/gookit/validate"
 
-	"github.com/goravel/framework/contracts/http"
-	validatecontract "github.com/goravel/framework/contracts/validation"
+	"github.com/mewway/go-laravel/contracts/http"
+	validatecontract "github.com/mewway/go-laravel/contracts/validation"
 )
 
 type Validation struct {

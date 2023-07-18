@@ -4,12 +4,12 @@ const Version string = "v1.12.5"
 
 const (
 	EnvRuntime = "runtime"
-	EnvArtisan = "artisan"
+	EnvArtisan = "july"
 	EnvTest    = "test"
 )
 
 var (
 	Env      = EnvRuntime
-	EnvPath  = ".app.yml"
+	EnvPath  = ".env"
 	RootPath string
 )

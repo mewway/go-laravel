@@ -1,7 +1,7 @@
 package facades
 
 import (
-	"github.com/goravel/framework/contracts/cache"
+	"github.com/mewway/go-laravel/contracts/cache"
 )
 
 func Cache() cache.Cache {

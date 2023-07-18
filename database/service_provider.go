@@ -4,9 +4,9 @@ import (
 	"context"
 	"fmt"
 
-	consolecontract "github.com/goravel/framework/contracts/console"
-	"github.com/goravel/framework/contracts/foundation"
-	"github.com/goravel/framework/database/console"
+	consolecontract "github.com/mewway/go-laravel/contracts/console"
+	"github.com/mewway/go-laravel/contracts/foundation"
+	"github.com/mewway/go-laravel/database/console"
 )
 
 const BindingOrm = "cicada.orm"

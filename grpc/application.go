@@ -12,7 +12,7 @@ import (
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/credentials/insecure"
 
-	"github.com/goravel/framework/contracts/config"
+	"github.com/mewway/go-laravel/contracts/config"
 )
 
 type Application struct {

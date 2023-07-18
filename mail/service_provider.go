@@ -1,8 +1,8 @@
 package mail
 
 import (
-	"github.com/goravel/framework/contracts/foundation"
-	"github.com/goravel/framework/contracts/queue"
+	"github.com/mewway/go-laravel/contracts/foundation"
+	"github.com/mewway/go-laravel/contracts/queue"
 )
 
 const Binding = "cicada.mail"

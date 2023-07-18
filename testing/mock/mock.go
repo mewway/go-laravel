@@ -1,21 +1,21 @@
 package mock
 
 import (
-	accessmock "github.com/goravel/framework/contracts/auth/access/mocks"
-	authmock "github.com/goravel/framework/contracts/auth/mocks"
-	cachemock "github.com/goravel/framework/contracts/cache/mocks"
-	configmock "github.com/goravel/framework/contracts/config/mocks"
-	consolemock "github.com/goravel/framework/contracts/console/mocks"
-	ormmock "github.com/goravel/framework/contracts/database/orm/mocks"
-	seedermocks "github.com/goravel/framework/contracts/database/seeder/mocks"
-	eventmock "github.com/goravel/framework/contracts/event/mocks"
-	filesystemmock "github.com/goravel/framework/contracts/filesystem/mocks"
-	foundationmock "github.com/goravel/framework/contracts/foundation/mocks"
-	grpcmock "github.com/goravel/framework/contracts/grpc/mocks"
-	mailmock "github.com/goravel/framework/contracts/mail/mocks"
-	queuemock "github.com/goravel/framework/contracts/queue/mocks"
-	validatemock "github.com/goravel/framework/contracts/validation/mocks"
-	"github.com/goravel/framework/foundation"
+	accessmock "github.com/mewway/go-laravel/contracts/auth/access/mocks"
+	authmock "github.com/mewway/go-laravel/contracts/auth/mocks"
+	cachemock "github.com/mewway/go-laravel/contracts/cache/mocks"
+	configmock "github.com/mewway/go-laravel/contracts/config/mocks"
+	consolemock "github.com/mewway/go-laravel/contracts/console/mocks"
+	ormmock "github.com/mewway/go-laravel/contracts/database/orm/mocks"
+	seedermocks "github.com/mewway/go-laravel/contracts/database/seeder/mocks"
+	eventmock "github.com/mewway/go-laravel/contracts/event/mocks"
+	filesystemmock "github.com/mewway/go-laravel/contracts/filesystem/mocks"
+	foundationmock "github.com/mewway/go-laravel/contracts/foundation/mocks"
+	grpcmock "github.com/mewway/go-laravel/contracts/grpc/mocks"
+	mailmock "github.com/mewway/go-laravel/contracts/mail/mocks"
+	queuemock "github.com/mewway/go-laravel/contracts/queue/mocks"
+	validatemock "github.com/mewway/go-laravel/contracts/validation/mocks"
+	"github.com/mewway/go-laravel/foundation"
 )
 
 var app *foundationmock.Application

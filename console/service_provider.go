@@ -1,9 +1,9 @@
 package console
 
 import (
-	"github.com/goravel/framework/console/console"
-	consolecontract "github.com/goravel/framework/contracts/console"
-	"github.com/goravel/framework/contracts/foundation"
+	"github.com/mewway/go-laravel/console/console"
+	consolecontract "github.com/mewway/go-laravel/contracts/console"
+	"github.com/mewway/go-laravel/contracts/foundation"
 )
 
 const Binding = "cicada.console"

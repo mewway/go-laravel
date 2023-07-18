@@ -1,7 +1,7 @@
 package facades
 
 import (
-	"github.com/goravel/framework/contracts/grpc"
+	"github.com/mewway/go-laravel/contracts/grpc"
 )
 
 func Grpc() grpc.Grpc {

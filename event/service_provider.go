@@ -1,9 +1,9 @@
 package event
 
 import (
-	"github.com/goravel/framework/contracts/console"
-	"github.com/goravel/framework/contracts/foundation"
-	eventConsole "github.com/goravel/framework/event/console"
+	"github.com/mewway/go-laravel/contracts/console"
+	"github.com/mewway/go-laravel/contracts/foundation"
+	eventConsole "github.com/mewway/go-laravel/event/console"
 )
 
 const Binding = "cicada.event"

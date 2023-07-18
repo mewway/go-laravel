@@ -12,7 +12,7 @@ import (
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/metadata"
 
-	configmock "github.com/goravel/framework/contracts/config/mocks"
+	configmock "github.com/mewway/go-laravel/contracts/config/mocks"
 )
 
 type contextKey int

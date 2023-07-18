@@ -6,7 +6,7 @@ import (
 
 	"github.com/gin-gonic/gin"
 
-	httpcontract "github.com/goravel/framework/contracts/http"
+	httpcontract "github.com/mewway/go-laravel/contracts/http"
 )
 
 type GinResponse struct {

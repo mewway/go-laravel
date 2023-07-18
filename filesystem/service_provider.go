@@ -1,9 +1,9 @@
 package filesystem
 
 import (
-	configcontract "github.com/goravel/framework/contracts/config"
-	filesystemcontract "github.com/goravel/framework/contracts/filesystem"
-	"github.com/goravel/framework/contracts/foundation"
+	configcontract "github.com/mewway/go-laravel/contracts/config"
+	filesystemcontract "github.com/mewway/go-laravel/contracts/filesystem"
+	"github.com/mewway/go-laravel/contracts/foundation"
 )
 
 const Binding = "cicada.filesystem"

@@ -6,8 +6,8 @@ import (
 	"gorm.io/gorm"
 	"gorm.io/gorm/clause"
 
-	contractsorm "github.com/goravel/framework/contracts/database/orm"
-	"github.com/goravel/framework/support/carbon"
+	contractsorm "github.com/mewway/go-laravel/contracts/database/orm"
+	"github.com/mewway/go-laravel/support/carbon"
 )
 
 const Associations = clause.Associations

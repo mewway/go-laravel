@@ -3,8 +3,8 @@ package http
 import (
 	"net/http"
 
-	"github.com/goravel/framework/contracts/filesystem"
-	"github.com/goravel/framework/contracts/validation"
+	"github.com/mewway/go-laravel/contracts/filesystem"
+	"github.com/mewway/go-laravel/contracts/validation"
 )
 
 //go:generate mockery --name=Request

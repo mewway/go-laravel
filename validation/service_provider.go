@@ -1,9 +1,9 @@
 package validation
 
 import (
-	consolecontract "github.com/goravel/framework/contracts/console"
-	"github.com/goravel/framework/contracts/foundation"
-	"github.com/goravel/framework/validation/console"
+	consolecontract "github.com/mewway/go-laravel/contracts/console"
+	"github.com/mewway/go-laravel/contracts/foundation"
+	"github.com/mewway/go-laravel/validation/console"
 )
 
 const Binding = "cicada.validation"
