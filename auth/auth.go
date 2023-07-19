@@ -18,7 +18,7 @@ import (
 	"github.com/mewway/go-laravel/support/database"
 )
 
-const CtxKey = "GoravelAuth"
+const CtxKey = "CicadaAuth"
 
 type Claims struct {
 	Key string `json:"key"`
