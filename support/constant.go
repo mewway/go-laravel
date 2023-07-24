@@ -29,6 +29,8 @@ const (
 	DirRequest    = "request"
 )
 
+const TabSpace = "    "
+
 var (
 	Env      = EnvRuntime
 	EnvPath  = ".env"

@@ -48,9 +48,9 @@ func (database *ServiceProvider) registerCommands(app foundation.Application) {
 		console.NewMigrateRefreshCommand(config, artisan),
 		console.NewMigrateFreshCommand(config, artisan),
 		console.NewMigrateStatusCommand(config),
-		console.NewModelMakeCommand(),
-		console.NewObserverMakeCommand(),
+		console.NewModelMakeCommand(config),
+		console.NewObserverMakeCommand(config),
 		console.NewSeedCommand(config, seeder),
-		console.NewSeederMakeCommand(),
+		console.NewSeederMakeCommand(config),
 	})
 }

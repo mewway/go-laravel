@@ -6,6 +6,7 @@ import (
 	"strings"
 
 	"github.com/gookit/color"
+	"github.com/mewway/go-laravel/contracts/config"
 	"github.com/mewway/go-laravel/support"
 
 	"github.com/mewway/go-laravel/contracts/console"
@@ -15,10 +16,13 @@ import (
 )
 
 type SeederMakeCommand struct {
+	config config.Config
 }
 
-func NewSeederMakeCommand() *SeederMakeCommand {
-	return &SeederMakeCommand{}
+func NewSeederMakeCommand(config config.Config) *SeederMakeCommand {
+	return &SeederMakeCommand{
+		config: config,
+	}
 }
 
 // Signature The name and signature of the console command.

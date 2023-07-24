@@ -7,11 +7,14 @@ func (r Stubs) Model() string {
 	return `package DummyPackage
 
 import (
+	"time"
+
 	"github.com/mewway/go-laravel/database/orm"
 )
-
+DummyConst
 type DummyModel struct {
 	orm.Model
+	DummyField
 }
 `
 }

@@ -6,6 +6,7 @@ import (
 	"strings"
 
 	"github.com/gookit/color"
+	"github.com/mewway/go-laravel/contracts/config"
 	"github.com/mewway/go-laravel/support"
 
 	"github.com/mewway/go-laravel/contracts/console"
@@ -15,10 +16,13 @@ import (
 )
 
 type ModelMakeCommand struct {
+	config config.Config
 }
 
-func NewModelMakeCommand() *ModelMakeCommand {
-	return &ModelMakeCommand{}
+func NewModelMakeCommand(config config.Config) *ModelMakeCommand {
+	return &ModelMakeCommand{
+		config: config,
+	}
 }
 
 // Signature The name and signature of the console command.
@@ -41,13 +45,14 @@ func (receiver *ModelMakeCommand) Extend() command.Extend {
 // Handle Execute the console command.
 func (receiver *ModelMakeCommand) Handle(ctx console.Context) error {
 	name := ctx.Argument(0)
+	database := ctx.Option("database")
 	if name == "" {
 		color.Redln("Not enough arguments (missing: name)")
 
 		return nil
 	}
 
-	if err := file.Create(receiver.getPath(name), receiver.populateStub(receiver.getStub(), name)); err != nil {
+	if err := file.Create(receiver.getPath(name), receiver.populateStub(receiver.getStub(), name, database)); err != nil {
 		return err
 	}
 
@@ -61,11 +66,24 @@ func (receiver *ModelMakeCommand) getStub() string {
 }
 
 // populateStub Populate the place-holders in the command stub.
-func (receiver *ModelMakeCommand) populateStub(stub string, name string) string {
+func (receiver *ModelMakeCommand) populateStub(stub, name, database string) string {
 	modelName, packageName, _ := receiver.parseName(name)
 
 	stub = strings.ReplaceAll(stub, "DummyModel", str.Case2Camel(modelName))
 	stub = strings.ReplaceAll(stub, "DummyPackage", packageName)
+
+	helper, err := NewStructHelper(receiver.config)
+	if err != nil {
+		return stub
+	}
+	db := helper.DefaultDb
+	if database != "" {
+		db = database
+	}
+	cols := helper.GetTableStruct(db, modelName)
+	dummyField := helper.StringColumns(cols)
+	stub = strings.ReplaceAll(stub, "DummyConst", "")
+	stub = strings.ReplaceAll(stub, "DummyField", dummyField)
 
 	return stub
 }

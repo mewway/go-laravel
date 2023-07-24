@@ -6,6 +6,7 @@ import (
 	"strings"
 
 	"github.com/gookit/color"
+	"github.com/mewway/go-laravel/contracts/config"
 	"github.com/mewway/go-laravel/support"
 
 	"github.com/mewway/go-laravel/contracts/console"
@@ -15,10 +16,13 @@ import (
 )
 
 type ObserverMakeCommand struct {
+	config config.Config
 }
 
-func NewObserverMakeCommand() *ObserverMakeCommand {
-	return &ObserverMakeCommand{}
+func NewObserverMakeCommand(config config.Config) *ObserverMakeCommand {
+	return &ObserverMakeCommand{
+		config: config,
+	}
 }
 
 // Signature The name and signature of the console command.
