@@ -27,6 +27,11 @@ const (
 	DirConfig     = "config"
 	DirMiddleware = "middleware"
 	DirRequest    = "request"
+	DirService    = "service"
+	DirLogic      = "logic"
+	DirRoute      = "route"
+	DirSupport    = "support"
+	DirPublic     = "public"
 )
 
 const TabSpace = "    "

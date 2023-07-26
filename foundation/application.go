@@ -2,6 +2,7 @@ package foundation
 
 import (
 	"flag"
+	"fmt"
 	"os"
 	"path/filepath"
 	"strings"
@@ -59,7 +60,7 @@ func (app *Application) Commands(commands []consolecontract.Command) {
 }
 
 func (app *Application) Path(path string) string {
-	return filepath.Join("app", path)
+	return filepath.Join(support.DirApp, path)
 }
 
 func (app *Application) BasePath(path string) string {
@@ -67,19 +68,19 @@ func (app *Application) BasePath(path string) string {
 }
 
 func (app *Application) ConfigPath(path string) string {
-	return filepath.Join("config", path)
+	return filepath.Join(support.DirConfig, path)
 }
 
 func (app *Application) DatabasePath(path string) string {
-	return filepath.Join("database", path)
+	return filepath.Join(support.DirDatabase, path)
 }
 
 func (app *Application) StoragePath(path string) string {
-	return filepath.Join("storage", path)
+	return filepath.Join(support.DirSupport, path)
 }
 
 func (app *Application) PublicPath(path string) string {
-	return filepath.Join("public", path)
+	return filepath.Join(support.DirPublic, path)
 }
 
 func (app *Application) Publishes(packageName string, paths map[string]string, groups ...string) {
@@ -199,7 +200,7 @@ func setRootPath() {
 	rootPath := getCurrentAbsolutePath()
 
 	// Hack air path
-	airPath := "/storage/temp"
+	airPath := fmt.Sprintf("/%s/temp", support.DirSupport)
 	if strings.HasSuffix(rootPath, airPath) {
 		rootPath = strings.ReplaceAll(rootPath, airPath, "")
 	}

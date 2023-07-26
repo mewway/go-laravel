@@ -21,6 +21,22 @@ type Gpt struct {
 	Model            string
 }
 
+type Parameters struct {
+	Type       string      `json:"type"`
+	Properties interface{} `json:"properties"`
+	Required   []string    `json:"required"`
+}
+
+type DescriptionType struct {
+	Description string `json:"description"`
+	Type        string `json:"type"`
+}
+
+const (
+	TypeObject = "object"
+	TypeString = "string"
+)
+
 func NewGpt(config config.Config) *Gpt {
 	gpt := Gpt{
 		Temperature:      0.5,
