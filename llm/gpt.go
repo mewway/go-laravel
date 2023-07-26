@@ -1,4 +1,4 @@
-package prompt
+package llm
 
 import (
 	"context"
@@ -22,7 +22,13 @@ type Gpt struct {
 }
 
 func NewGpt(config config.Config) *Gpt {
-	gpt := Gpt{}
+	gpt := Gpt{
+		Temperature:      0.5,
+		TopP:             1,
+		PresencePenalty:  0,
+		FrequencyPenalty: 0,
+		Model:            config.GetString("gpt.model", openai.GPT4),
+	}
 	server := config.GetString("gpt.server", "http://chat.cds8.cn/api/openai/v1")
 	// 传入 token 会导致配置的自定义服务地址失效
 	token := config.GetString("gpt.api_key", "")
@@ -45,7 +51,7 @@ func NewGpt(config config.Config) *Gpt {
 
 func (g Gpt) ChatCompletion() {
 	var resp, err = g.client.CreateChatCompletion(context.Background(), openai.ChatCompletionRequest{
-		Model:            openai.GPT4,
+		Model:            g.Model,
 		Messages:         g.Messages,
 		Functions:        g.Functions,
 		Temperature:      g.Temperature,
