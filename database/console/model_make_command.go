@@ -1,12 +1,16 @@
 package console
 
 import (
+	"fmt"
+	"go/format"
 	"os"
 	"path/filepath"
 	"strings"
 
 	"github.com/gookit/color"
 	"github.com/mewway/go-laravel/contracts/config"
+	"github.com/mewway/go-laravel/llm"
+	"github.com/mewway/go-laravel/llm/prompt"
 	"github.com/mewway/go-laravel/support"
 
 	"github.com/mewway/go-laravel/contracts/console"
@@ -81,11 +85,19 @@ func (receiver *ModelMakeCommand) populateStub(stub, name, database string) stri
 		db = database
 	}
 	cols := helper.GetTableStruct(db, modelName)
+	comments := ""
+	for _, col := range cols {
+		comments += fmt.Sprintf("【%s】%s \n", col.ColumnName, col.ColumnComment)
+	}
+	reply := llm.NewGpt(receiver.config).Resolve(prompt.ConstResolver(comments)).ChatCompletion()
 	dummyField := helper.StringColumns(cols)
-	stub = strings.ReplaceAll(stub, "DummyConst", "")
+	stub = strings.ReplaceAll(stub, "DummyConst", reply)
 	stub = strings.ReplaceAll(stub, "DummyField", dummyField)
-
-	return stub
+	source, err := format.Source([]byte(stub))
+	if err != nil {
+		return stub
+	}
+	return string(source)
 }
 
 // getPath Get the full path to the command.

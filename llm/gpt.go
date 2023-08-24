@@ -2,6 +2,7 @@ package llm
 
 import (
 	"context"
+	"encoding/json"
 	"fmt"
 	"net/http"
 
@@ -32,9 +33,18 @@ type DescriptionType struct {
 	Type        string `json:"type"`
 }
 
+type CommonResolverBody struct {
+	Text string `json:"text"`
+}
+
 const (
 	TypeObject = "object"
 	TypeString = "string"
+)
+
+const (
+	CommonFuncName  = "resolver"
+	CommonFuncField = "text"
 )
 
 func NewGpt(config config.Config) *Gpt {
@@ -65,7 +75,7 @@ func NewGpt(config config.Config) *Gpt {
 	return &gpt
 }
 
-func (g Gpt) ChatCompletion() {
+func (g *Gpt) ChatCompletion() (reply string) {
 	var resp, err = g.client.CreateChatCompletion(context.Background(), openai.ChatCompletionRequest{
 		Model:            g.Model,
 		Messages:         g.Messages,
@@ -80,6 +90,32 @@ func (g Gpt) ChatCompletion() {
 		fmt.Printf("ChatCompletion error: %v\n", err)
 		return
 	}
+	if len(resp.Choices) == 0 {
+		fmt.Println("大模型返回的结果为空")
+		return
+	}
+	// 函数调用
+	if resp.Choices[0].Message.FunctionCall != nil {
+		switch resp.Choices[0].Message.FunctionCall.Name {
+		// 默认的文本提取器
+		case CommonFuncName:
+			commonBody := &CommonResolverBody{}
+			err := json.Unmarshal([]byte(resp.Choices[0].Message.FunctionCall.Arguments), commonBody)
+			if err != nil {
+				fmt.Println(err)
+				return
+			}
+			reply = commonBody.Text
+		default:
+		}
+		return
+	}
+	reply = resp.Choices[0].Message.Content
+	return
+}
 
-	fmt.Println(resp.Choices[0].Message.Content)
+func (g *Gpt) Resolve(messages []openai.ChatCompletionMessage, functions []openai.FunctionDefinition) *Gpt {
+	g.Messages = messages
+	g.Functions = functions
+	return g
 }

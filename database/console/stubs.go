@@ -11,6 +11,7 @@ import (
 
 	"github.com/mewway/go-laravel/database/orm"
 )
+
 DummyConst
 type DummyModel struct {
 	orm.Model
