@@ -69,9 +69,9 @@ func TableCheckResolver(ddl, countMap string) (messages []openai.ChatCompletionM
 	7. 你的推荐修改等级为
 		1. Error: 错误（急切需要修改，不修改会导致错误发生）这个级别会返回 SQL 修正的建议
 		2. Warning: 警告（最好按照建议修改），这个级别会返回 SQL 修正的建议
-		3. Info: 建议（修改能得到更好的结果），这个级别的可以不返回修正的 SQL 建议
-	8. 你的修正建议要尽可能言简意赅，并且按照Error、Warning、Info进行排序后返回
-	9. 针对字段命名拼写错误给出修正建议，不要使用 mysql 中的不常用的数据类型
+	8. 你的修正建议要尽可能言简意赅，并且按照Error、Warning的紧急程度进行排序后返回
+	9. 针对字段命名拼写错误给出修正建议，不要使用 mysql 中的不常用的数据类型如： enum、blob等
+    10. 每次仅返回你认为最为优先级较高的不超过 5 条的修改建议
 
 # 你的返回需要符合以下风格：
 	- 【Info】字段【foo】使用了 varchar(32) 类型，建议结合实际场景选用更大的长度

@@ -58,7 +58,7 @@ const (
 func NewGpt(config config.Config) *Gpt {
 	gpt := Gpt{
 		Temperature:      0,
-		TopP:             0,
+		TopP:             1,
 		PresencePenalty:  0,
 		FrequencyPenalty: 0,
 		Model:            config.GetString("gpt.model", openai.GPT4),
