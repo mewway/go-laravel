@@ -6,6 +6,7 @@ import (
 	"fmt"
 	"net/http"
 
+	"github.com/gookit/color"
 	"github.com/mewway/go-laravel/contracts/config"
 	"github.com/mewway/go-openai"
 )
@@ -20,12 +21,14 @@ type Gpt struct {
 	PresencePenalty  float32
 	FrequencyPenalty float32
 	Model            string
+	callback         Callback
 }
 
 type Parameters struct {
-	Type       string      `json:"type"`
-	Properties interface{} `json:"properties"`
-	Required   []string    `json:"required"`
+	Type       string   `json:"type"`
+	Items      any      `json:"items,omitempty"`
+	Properties any      `json:"properties,omitempty"`
+	Required   []string `json:"required"`
 }
 
 type DescriptionType struct {
@@ -37,9 +40,14 @@ type CommonResolverBody struct {
 	Text string `json:"text"`
 }
 
+type Callback func(reply string, replyType string) (resp string)
+
 const (
-	TypeObject = "object"
-	TypeString = "string"
+	TypeObject  = "object"
+	TypeString  = "string"
+	TypeArray   = "array"
+	TypeNumber  = "number"
+	TypeBoolean = "bool"
 )
 
 const (
@@ -49,8 +57,8 @@ const (
 
 func NewGpt(config config.Config) *Gpt {
 	gpt := Gpt{
-		Temperature:      0.5,
-		TopP:             1,
+		Temperature:      0,
+		TopP:             0,
 		PresencePenalty:  0,
 		FrequencyPenalty: 0,
 		Model:            config.GetString("gpt.model", openai.GPT4),
@@ -75,7 +83,13 @@ func NewGpt(config config.Config) *Gpt {
 	return &gpt
 }
 
-func (g *Gpt) ChatCompletion() (reply string) {
+func (g *Gpt) ChatCompletion(remark string) (reply string) {
+	tips := "正在调用大模型..."
+	if remark != "" {
+		tips = fmt.Sprintf("【%s】大模型调用中...", remark)
+	}
+	color.Grayln(tips)
+
 	var resp, err = g.client.CreateChatCompletion(context.Background(), openai.ChatCompletionRequest{
 		Model:            g.Model,
 		Messages:         g.Messages,
@@ -87,11 +101,16 @@ func (g *Gpt) ChatCompletion() (reply string) {
 		TopP:             g.TopP,
 	})
 	if err != nil {
-		fmt.Printf("ChatCompletion error: %v\n", err)
+		color.Errorln(err)
+
+		return ""
+	}
+	if err != nil {
+		color.Redln(err.Error())
 		return
 	}
 	if len(resp.Choices) == 0 {
-		fmt.Println("大模型返回的结果为空")
+		color.Redln("大模型返回的结果为空")
 		return
 	}
 	// 函数调用
@@ -99,23 +118,38 @@ func (g *Gpt) ChatCompletion() (reply string) {
 		switch resp.Choices[0].Message.FunctionCall.Name {
 		// 默认的文本提取器
 		case CommonFuncName:
-			commonBody := &CommonResolverBody{}
-			err := json.Unmarshal([]byte(resp.Choices[0].Message.FunctionCall.Arguments), commonBody)
-			if err != nil {
-				fmt.Println(err)
-				return
-			}
-			reply = commonBody.Text
+			g.callback = commonCallback
+			reply = g.callback(resp.Choices[0].Message.FunctionCall.Arguments, resp.Choices[0].Message.FunctionCall.Name)
 		default:
+			reply = resp.Choices[0].Message.FunctionCall.Arguments
+			if g.callback != nil {
+				reply = g.callback(resp.Choices[0].Message.FunctionCall.Arguments, resp.Choices[0].Message.FunctionCall.Name)
+			}
 		}
+		return
+	}
+	if g.callback != nil {
+		reply = g.callback(resp.Choices[0].Message.Content, "")
 		return
 	}
 	reply = resp.Choices[0].Message.Content
 	return
 }
 
-func (g *Gpt) Resolve(messages []openai.ChatCompletionMessage, functions []openai.FunctionDefinition) *Gpt {
+func (g *Gpt) Resolve(messages []openai.ChatCompletionMessage, functions []openai.FunctionDefinition, callback Callback) *Gpt {
 	g.Messages = messages
 	g.Functions = functions
+	g.callback = callback
 	return g
+}
+
+func commonCallback(reply string, replyType string) (resp string) {
+	commonBody := &CommonResolverBody{}
+	err := json.Unmarshal([]byte(reply), commonBody)
+	if err != nil {
+		color.Redln(err)
+		return
+	}
+	resp = commonBody.Text
+	return
 }

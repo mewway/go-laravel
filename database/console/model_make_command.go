@@ -10,6 +10,7 @@ import (
 	"github.com/gookit/color"
 	"github.com/mewway/go-laravel/contracts/config"
 	"github.com/mewway/go-laravel/llm"
+	"github.com/mewway/go-laravel/llm/function"
 	"github.com/mewway/go-laravel/llm/prompt"
 	"github.com/mewway/go-laravel/support"
 
@@ -86,10 +87,19 @@ func (receiver *ModelMakeCommand) populateStub(stub, name, database string) stri
 	}
 	cols := helper.GetTableStruct(db, modelName)
 	comments := ""
+	columns := []string{}
 	for _, col := range cols {
 		comments += fmt.Sprintf("【%s】%s \n", col.ColumnName, col.ColumnComment)
+		columns = append(columns, col.ColumnName)
 	}
-	reply := llm.NewGpt(receiver.config).Resolve(prompt.ConstResolver(comments)).ChatCompletion()
+	// 查出表数据去重数量
+	countMapString := function.NewDB(receiver.config).QueryTableDistinctCountMap(db, name, columns)
+	// 查出建表语句
+	ddl := function.NewDB(receiver.config).DDL(db, name)
+
+	llm.NewGpt(receiver.config).Resolve(prompt.TableCheckResolver(ddl, countMapString)).ChatCompletion("检查表结构是否存在错误")
+	// 检查并定义 const
+	reply := llm.NewGpt(receiver.config).Resolve(prompt.ConstResolver(comments)).ChatCompletion("表结构体生成")
 	dummyField := helper.StringColumns(cols)
 	stub = strings.ReplaceAll(stub, "DummyConst", reply)
 	stub = strings.ReplaceAll(stub, "DummyField", dummyField)
