@@ -87,7 +87,7 @@ func (receiver *ControllerMakeCommand) getPath(name string) string {
 
 	controllerName, _, folderPath := receiver.parseName(name)
 
-	return filepath.Join(pwd, support.DirApp, support.DirController, folderPath, str.Camel2Case(controllerName)+".go")
+	return filepath.Join(pwd, support.DirController, folderPath, str.Camel2Case(controllerName)+".go")
 }
 
 // parseName Parse the name to get the controller name, package name and folder path.
