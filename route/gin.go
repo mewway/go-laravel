@@ -127,3 +127,7 @@ func (r *Gin) outputRoutes() {
 		}
 	}
 }
+
+func (r *Gin) GetInstance() *gin.Engine {
+	return r.instance
+}

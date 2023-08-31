@@ -46,7 +46,7 @@ func TestFlagsToCliFlags(t *testing.T) {
 	// Assert that each CLI flag has the expected name, aliases, usage, required, and value
 	for i, flag := range flags {
 		switch flag.Type() {
-		case command.FlagTypeBool:
+		case command.ArgTypeBool:
 			boolFlag := flag.(*command.BoolFlag)
 			cliBoolFlag := cliFlags[i].(*cli.BoolFlag)
 			assert.Equal(t, boolFlag.Name, cliBoolFlag.Name)
@@ -54,7 +54,7 @@ func TestFlagsToCliFlags(t *testing.T) {
 			assert.Equal(t, boolFlag.Usage, cliBoolFlag.Usage)
 			assert.Equal(t, boolFlag.Required, cliBoolFlag.Required)
 			assert.Equal(t, boolFlag.Value, cliBoolFlag.Value)
-		case command.FlagTypeFloat64:
+		case command.ArgTypeFloat64:
 			float64Flag := flag.(*command.Float64Flag)
 			cliFloat64Flag := cliFlags[i].(*cli.Float64Flag)
 			assert.Equal(t, float64Flag.Name, cliFloat64Flag.Name)
@@ -62,7 +62,7 @@ func TestFlagsToCliFlags(t *testing.T) {
 			assert.Equal(t, float64Flag.Usage, cliFloat64Flag.Usage)
 			assert.Equal(t, float64Flag.Required, cliFloat64Flag.Required)
 			assert.Equal(t, float64Flag.Value, cliFloat64Flag.Value)
-		case command.FlagTypeFloat64Slice:
+		case command.ArgTypeFloat64Slice:
 			float64SliceFlag := flag.(*command.Float64SliceFlag)
 			cliFloat64SliceFlag := cliFlags[i].(*cli.Float64SliceFlag)
 			assert.Equal(t, float64SliceFlag.Name, cliFloat64SliceFlag.Name)
@@ -70,7 +70,7 @@ func TestFlagsToCliFlags(t *testing.T) {
 			assert.Equal(t, float64SliceFlag.Usage, cliFloat64SliceFlag.Usage)
 			assert.Equal(t, float64SliceFlag.Required, cliFloat64SliceFlag.Required)
 			assert.Equal(t, cli.NewFloat64Slice(float64SliceFlag.Value...), cliFloat64SliceFlag.Value)
-		case command.FlagTypeInt:
+		case command.ArgTypeInt:
 			intFlag := flag.(*command.IntFlag)
 			cliIntFlag := cliFlags[i].(*cli.IntFlag)
 			assert.Equal(t, intFlag.Name, cliIntFlag.Name)
@@ -78,7 +78,7 @@ func TestFlagsToCliFlags(t *testing.T) {
 			assert.Equal(t, intFlag.Usage, cliIntFlag.Usage)
 			assert.Equal(t, intFlag.Required, cliIntFlag.Required)
 			assert.Equal(t, intFlag.Value, cliIntFlag.Value)
-		case command.FlagTypeIntSlice:
+		case command.ArgTypeIntSlice:
 			intSliceFlag := flag.(*command.IntSliceFlag)
 			cliIntSliceFlag := cliFlags[i].(*cli.IntSliceFlag)
 			assert.Equal(t, intSliceFlag.Name, cliIntSliceFlag.Name)
@@ -86,7 +86,7 @@ func TestFlagsToCliFlags(t *testing.T) {
 			assert.Equal(t, intSliceFlag.Usage, cliIntSliceFlag.Usage)
 			assert.Equal(t, intSliceFlag.Required, cliIntSliceFlag.Required)
 			assert.Equal(t, cli.NewIntSlice(intSliceFlag.Value...), cliIntSliceFlag.Value)
-		case command.FlagTypeInt64:
+		case command.ArgTypeInt64:
 			int64Flag := flag.(*command.Int64Flag)
 			cliInt64Flag := cliFlags[i].(*cli.Int64Flag)
 			assert.Equal(t, int64Flag.Name, cliInt64Flag.Name)
@@ -94,7 +94,7 @@ func TestFlagsToCliFlags(t *testing.T) {
 			assert.Equal(t, int64Flag.Usage, cliInt64Flag.Usage)
 			assert.Equal(t, int64Flag.Required, cliInt64Flag.Required)
 			assert.Equal(t, int64Flag.Value, cliInt64Flag.Value)
-		case command.FlagTypeInt64Slice:
+		case command.ArgTypeInt64Slice:
 			int64SliceFlag := flag.(*command.Int64SliceFlag)
 			cliInt64SliceFlag := cliFlags[i].(*cli.Int64SliceFlag)
 			assert.Equal(t, int64SliceFlag.Name, cliInt64SliceFlag.Name)
@@ -102,7 +102,7 @@ func TestFlagsToCliFlags(t *testing.T) {
 			assert.Equal(t, int64SliceFlag.Usage, cliInt64SliceFlag.Usage)
 			assert.Equal(t, int64SliceFlag.Required, cliInt64SliceFlag.Required)
 			assert.Equal(t, cli.NewInt64Slice(int64SliceFlag.Value...), cliInt64SliceFlag.Value)
-		case command.FlagTypeString:
+		case command.ArgTypeString:
 			stringFlag := flag.(*command.StringFlag)
 			cliStringFlag := cliFlags[i].(*cli.StringFlag)
 			assert.Equal(t, stringFlag.Name, cliStringFlag.Name)
@@ -110,7 +110,7 @@ func TestFlagsToCliFlags(t *testing.T) {
 			assert.Equal(t, stringFlag.Usage, cliStringFlag.Usage)
 			assert.Equal(t, stringFlag.Required, cliStringFlag.Required)
 			assert.Equal(t, stringFlag.Value, cliStringFlag.Value)
-		case command.FlagTypeStringSlice:
+		case command.ArgTypeStringSlice:
 			stringSliceFlag := flag.(*command.StringSliceFlag)
 			cliStringSliceFlag := cliFlags[i].(*cli.StringSliceFlag)
 			assert.Equal(t, stringSliceFlag.Name, cliStringSliceFlag.Name)
