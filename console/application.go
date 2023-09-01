@@ -73,14 +73,17 @@ func (c *Application) Run(args []string, exitIfArtisan bool) {
 		}
 
 		if args[artisanIndex+1] != "-V" && args[artisanIndex+1] != "--version" {
-			fmt.Println(args)
 			cliArgs := append([]string{args[0]}, args[artisanIndex+1:]...)
 			cmd := c.instance.Command(cliArgs[1])
 			if cmd != nil {
 				signature := cliArgs[1]
 				if cslCmd, ok := c.commandMap[signature]; ok == true {
-					// TODO
-					fmt.Println("holy shit:", signature, cslCmd.Description())
+					err := cslCmd.Extend().Validate(cliArgs[2:])
+					if err != nil {
+						color.Errorln(fmt.Sprintf("Command[%s: %s] options validate failed, please check:", cslCmd.Signature(), cslCmd.Description()))
+						color.Grayln(err)
+						os.Exit(2)
+					}
 				}
 			}
 			if err := c.instance.Run(cliArgs); err != nil {

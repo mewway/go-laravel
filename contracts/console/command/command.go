@@ -1,6 +1,7 @@
 package command
 
 import (
+	"errors"
 	"fmt"
 	"strings"
 
@@ -25,6 +26,56 @@ type Extend struct {
 	Args     []Arg
 }
 
+func (e Extend) Validate(args []string) (err error) {
+	var filter []string
+	for _, v := range args {
+		// 如果是命令行的 flag
+		if strings.HasPrefix(v, "-") || strings.HasPrefix(v, "--") {
+			continue
+		}
+		filter = append(filter, v)
+	}
+	var required int
+	for i, v := range e.Args {
+		r := false
+		switch v.(type) {
+		case *BoolArg:
+			t := v.(*BoolArg)
+			r = t.Required
+		case *Float64Arg:
+			t := v.(*Float64Arg)
+			r = t.Required
+		case *Float64SliceArg:
+			t := v.(*Float64SliceArg)
+			r = t.Required
+		case *IntArg:
+			t := v.(*IntArg)
+			r = t.Required
+		case *IntSliceArg:
+			t := v.(*IntSliceArg)
+			r = t.Required
+		case *Int64Arg:
+			t := v.(*Int64Arg)
+			r = t.Required
+		case *Int64SliceArg:
+			t := v.(*Int64SliceArg)
+			r = t.Required
+		case *StringArg:
+			t := v.(*StringArg)
+			r = t.Required
+		case *StringSliceArg:
+			t := v.(*StringSliceArg)
+			r = t.Required
+		}
+		if r {
+			required = i + 1
+		}
+	}
+	if len(filter) < required {
+		err = errors.New(e.ArgsUsage())
+	}
+	return
+}
 func (e Extend) ArgsUsage() string {
 	args := e.Args
 	var usage []string
