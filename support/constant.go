@@ -34,6 +34,9 @@ const (
 	DirPublic     = "public"
 )
 
+const (
+	FileRouteDefault = "kernel"
+)
 const TabSpace = "    "
 
 var (
