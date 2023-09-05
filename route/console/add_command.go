@@ -148,7 +148,13 @@ func (receiver *AddCommand) Handle(ctx console.Context) error {
 				},
 				Results: nil,
 			},
-			Body: &ast.BlockStmt{},
+			Body: &ast.BlockStmt{
+				List: []ast.Stmt{
+					&ast.ExprStmt{
+						X: &ast.Ident{Name: "route"},
+					},
+				},
+			},
 		}
 		f.Decls = append(f.Decls, targetFunc)
 	}
