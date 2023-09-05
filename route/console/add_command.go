@@ -16,6 +16,7 @@ import (
 	"github.com/mewway/go-laravel/contracts/console/command"
 	"github.com/mewway/go-laravel/support"
 	"github.com/mewway/go-laravel/support/str"
+	"golang.org/x/tools/go/ast/astutil"
 )
 
 type AddCommand struct {
@@ -97,21 +98,11 @@ func (receiver *AddCommand) Handle(ctx console.Context) error {
 	// 文件不存在的时候
 	if err != nil {
 		f = &ast.File{
-			Name:    &ast.Ident{Name: "route"},
-			Imports: []*ast.ImportSpec{},
-			Decls:   []ast.Decl{},
+			Name:  &ast.Ident{Name: "route"},
+			Decls: []ast.Decl{},
 		}
-		f.Imports = append(f.Imports, &ast.ImportSpec{
-			Path: &ast.BasicLit{
-				Kind:  token.STRING,
-				Value: `"github.com/mewway/go-laravel/contracts/http"`,
-			},
-		}, &ast.ImportSpec{
-			Path: &ast.BasicLit{
-				Kind:  token.STRING,
-				Value: `"fmt"`,
-			},
-		})
+		astutil.AddImport(t, f, "github.com/mewway/go-laravel/contracts/http")
+		astutil.AddImport(t, f, "github.com/mewway/go-laravel/contracts/route")
 	} else {
 		f, err = parser.ParseFile(t, filePath, nil, parser.ParseComments)
 		if err != nil {
@@ -168,10 +159,9 @@ func (receiver *AddCommand) Handle(ctx console.Context) error {
 	}
 
 	defer output.Close()
-
 	err = printer.Fprint(output, t, f)
 	if err != nil {
-		return errors.New(fmt.Sprintf("File ouput error occured: %s", err))
+		return errors.New(fmt.Sprintf("File output error occured: %s", err))
 	}
 	// 新建函数并创建路由
 	return nil
