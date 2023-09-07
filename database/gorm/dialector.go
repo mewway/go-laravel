@@ -5,7 +5,6 @@ import (
 
 	"github.com/glebarez/sqlite"
 	"github.com/google/wire"
-	"github.com/mewway/go-laravel/database/httpm"
 	"gorm.io/driver/mysql"
 	"gorm.io/driver/postgres"
 	"gorm.io/driver/sqlserver"
@@ -54,8 +53,6 @@ func (d *DialectorImpl) Make(configs []databasecontract.Config) ([]gorm.Dialecto
 			dialector = d.sqlite(item)
 		case orm.DriverSqlserver:
 			dialector = d.sqlserver(item)
-		case orm.DriverGrpc, orm.DriverHttp:
-			dialector = d.http(item)
 		default:
 			err = fmt.Errorf("err database driver: %s, only support mysql, postgresql, sqlite and sqlserver", driver)
 		}
@@ -110,10 +107,4 @@ func (d *DialectorImpl) sqlserver(config databasecontract.Config) gorm.Dialector
 	return sqlserver.New(sqlserver.Config{
 		DSN: dsn,
 	})
-}
-
-func (d *DialectorImpl) http(config databasecontract.Config) gorm.Dialector {
-	return &httpm.Dialector{
-		Config: &httpm.Config{},
-	}
 }
