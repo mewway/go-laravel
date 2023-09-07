@@ -5,6 +5,8 @@ const (
 	DriverPostgresql Driver = "postgresql"
 	DriverSqlite     Driver = "sqlite"
 	DriverSqlserver  Driver = "sqlserver"
+	DriverHttp       Driver = "http"
+	DriverGrpc       Driver = "grpc"
 )
 
 type Driver string
