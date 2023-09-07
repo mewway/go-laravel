@@ -3,7 +3,9 @@ package console
 import (
 	"errors"
 	"fmt"
+	"strings"
 
+	"github.com/gookit/color"
 	"github.com/mewway/go-laravel/contracts/console"
 	"github.com/mewway/go-laravel/contracts/console/command"
 	"github.com/mewway/go-laravel/doc/yapi"
@@ -39,6 +41,9 @@ func (y YapiListCommand) Handle(ctx console.Context) error {
 		return errors.New("please complete the doc configuration first")
 	}
 	l := c.QueryApiList()
-	fmt.Println(fmt.Sprintf("%#v", l))
+	color.Cyanln("Yapi api list:")
+	for i, v := range l.List {
+		color.Grayln(fmt.Sprintf("%d.【%s】%s: %s", i+1, strings.ToUpper(v.Method), v.Path, v.Title))
+	}
 	return nil
 }

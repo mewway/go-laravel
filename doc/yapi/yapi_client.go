@@ -63,9 +63,9 @@ func (c Client) QueryApiList() *response.ApiListResp {
 	return r.Data
 }
 
-func (c Client) QueryApiInfo() *response.ApiInfoResp {
+func (c Client) QueryApiInfo(keyword string) *response.ApiInfoResp {
 	api := "/api/interface/get"
-	s := fmt.Sprintf("%s/%s?token=%s", strings.TrimRight(c.Server, "/"), strings.TrimLeft(api, "/"), c.Token)
+	s := fmt.Sprintf("%s/%s?token=%s&id=%s", strings.TrimRight(c.Server, "/"), strings.TrimLeft(api, "/"), c.Token, keyword)
 	resp, err := c.HttpClient.Get(s)
 	if err != nil {
 		color.Errorln("Request failed:" + err.Error())

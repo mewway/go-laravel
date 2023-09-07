@@ -34,3 +34,76 @@ inheritPreProcessors: {}
 preProcessors: []
 postProcessors: []
 */
+
+type SaveApiReq struct {
+	Path                  string                 `json:"path"`
+	Method                string                 `json:"method"`
+	Name                  string                 `json:"name"`
+	FolderId              int                    `json:"folder_id"`
+	Status                string                 `json:"status"`
+	ServerId              string                 `json:"server_id"`
+	ResponsibleId         int                    `json:"responsible_id"`
+	Tags                  []string               `json:"tags"`
+	Description           string                 `json:"description"`
+	OperationId           string                 `json:"operation_id"`
+	SourceUrl             string                 `json:"source_url"`
+	Responses             []Response             `json:"responses"`
+	ResponseExamples      []string               `json:"response_examples"`
+	CodeSamples           []string               `json:"code_samples"`
+	CommonParameters      CommonParams           `json:"common_parameters"`
+	CustomApiFields       map[string]interface{} `json:"custom_api_fields"`
+	CommonResponseStatus  interface{}            `json:"common_response_status"`
+	ResponseId            int                    `json:"response_id"`
+	Type                  string                 `json:"type"`
+	Parameters            Params                 `json:"parameters"`
+	RequestBody           ReqBody                `json:"request_body"`
+	ResponseChildren      []string               `json:"response_children"`
+	Auth                  interface{}            `json:"auth"`
+	AdvancedSettings      interface{}            `json:"advanced_settings"`
+	InheritPostProcessors bool                   `json:"inherit_post_processors"`
+	InheritPreProcessors  bool                   `json:"inherit_pre_processors"`
+	PreProcessors         []string               `json:"pre_processors"`
+	PostProcessors        []string               `json:"post_processors"`
+}
+
+type Response struct {
+	Code        int        `json:"code"`
+	ContentType string     `json:"content_type"`
+	TempId      string     `json:"temp_id"`
+	Name        string     `json:"name"`
+	JsonSchema  JsonSchema `json:"json_schema"`
+}
+
+type JsonSchema struct {
+	Type       string                 `json:"type"`
+	Properties map[string]interface{} `json:"properties,omitempty"`
+}
+
+type CommonParams struct {
+	Query  []interface{} `json:"query"`
+	Body   []interface{} `json:"body"`
+	Cookie []interface{} `json:"cookie"`
+	Header []struct {
+		Name string `json:"name"`
+	} `json:"header"`
+}
+
+type Params struct {
+	Query []Param `json:"query"`
+}
+
+type Param struct {
+	Required    bool   `json:"required"`
+	Description string `json:"description"`
+	Type        string `json:"type"`
+	Id          string `json:"id"`
+	Example     string `json:"example"`
+	Enable      bool   `json:"enable"`
+	Name        string `json:"name"`
+}
+
+type ReqBody struct {
+	Type       string     `json:"type"`
+	Parameters []Param    `json:"parameters"`
+	JsonSchema JsonSchema `json:"json_schema"`
+}

@@ -23,5 +23,6 @@ func (receiver *ServiceProvider) registerCommands(app foundation.Application) {
 	artisan := app.MakeArtisan()
 	artisan.Register([]consolecontract.Command{
 		console.NewYapiListCommand(artisan),
+		console.NewApifoxListCommand(artisan),
 	})
 }

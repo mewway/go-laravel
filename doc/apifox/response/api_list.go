@@ -1,10 +1,5 @@
 package response
 
-type ApiListResp struct {
-	Success bool       `json:"success"`
-	Data    []*ApiItem `json:"data"`
-}
-
 type ApiItem struct {
 	Key      string     `json:"key"`
 	Type     string     `json:"type"`

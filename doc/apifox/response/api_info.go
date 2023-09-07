@@ -2,7 +2,7 @@ package response
 
 import "time"
 
-type ApiInfoResp struct {
+type ApiListResp struct {
 	Success bool       `json:"success"`
 	Data    []*ApiInfo `json:"data"`
 }
@@ -24,7 +24,7 @@ type ApiInfo struct {
 	Method      string        `json:"method"`
 	Path        string        `json:"path"`
 	Tags        []interface{} `json:"tags"`
-	Status      string        `json:"status"`
+	Status      int           `json:"status"`
 	RequestBody struct {
 		Type        string         `json:"type"`
 		Parameters  []interface{}  `json:"parameters"`
@@ -98,9 +98,8 @@ type ApiInfo struct {
 	AdvancedSettings struct {
 		IsDefaultUrlEncoding int `json:"isDefaultUrlEncoding,omitempty"`
 	} `json:"advancedSettings"`
-	CustomApiFields struct {
-	} `json:"customApiFields"`
-	MockScript struct {
+	CustomApiFields any `json:"customApiFields"`
+	MockScript      struct {
 	} `json:"mockScript"`
 	CreatedAt        time.Time   `json:"createdAt"`
 	UpdatedAt        time.Time   `json:"updatedAt"`
