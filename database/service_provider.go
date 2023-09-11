@@ -7,10 +7,12 @@ import (
 	consolecontract "github.com/mewway/go-laravel/contracts/console"
 	"github.com/mewway/go-laravel/contracts/foundation"
 	"github.com/mewway/go-laravel/database/console"
+	"github.com/mewway/go-laravel/database/provider"
 )
 
 const BindingOrm = "cicada.orm"
 const BindingSeeder = "cicada.seeder"
+const BindingDataProvider = "cicada.data.provider.%s"
 
 type ServiceProvider struct {
 }
@@ -34,6 +36,7 @@ func (database *ServiceProvider) Register(app foundation.Application) {
 
 func (database *ServiceProvider) Boot(app foundation.Application) {
 	database.registerCommands(app)
+	database.registerDataProvider(app)
 }
 
 func (database *ServiceProvider) registerCommands(app foundation.Application) {
@@ -53,4 +56,25 @@ func (database *ServiceProvider) registerCommands(app foundation.Application) {
 		console.NewSeedCommand(config, seeder),
 		console.NewSeederMakeCommand(config),
 	})
+}
+
+func (database *ServiceProvider) registerDataProvider(app foundation.Application) {
+	config := app.MakeConfig()
+	providers := config.Get("data_provider.providers")
+
+	switch providers.(type) {
+	case map[string]provider.DataProvider:
+		for n, p := range providers.(map[string]provider.DataProvider) {
+			pKey := fmt.Sprintf(BindingDataProvider, n)
+			app.Singleton(pKey, func(app foundation.Application) (any, error) {
+				return p, nil
+			})
+			for a, api := range p.Alias() {
+				provider.AliasApiMap[a] = api
+				provider.ApiProviderMap[api] = &p
+			}
+		}
+	default:
+		panic("data_provider.providers must be slice of provider.DataProvider")
+	}
 }

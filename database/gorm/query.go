@@ -6,6 +6,7 @@ import (
 	"reflect"
 
 	"github.com/google/wire"
+	"github.com/mewway/go-laravel/database/provider"
 	"github.com/spf13/cast"
 	"gorm.io/driver/mysql"
 	"gorm.io/driver/postgres"
@@ -26,6 +27,7 @@ var _ ormcontract.Query = &QueryImpl{}
 type QueryImpl struct {
 	instance      *gormio.DB
 	withoutEvents bool
+	eagerHandlers []*provider.DataProvider
 }
 
 func NewQueryImpl(ctx context.Context, config config.Config, gorm Gorm) (*QueryImpl, error) {
@@ -934,4 +936,21 @@ func observerEvent(event ormcontract.EventType, observer ormcontract.Observer) f
 	}
 
 	return nil
+}
+
+func (r *QueryImpl) Eager(relation string, args ...any) ormcontract.Query {
+	aliasMap := provider.AliasApiMap
+	if _, ok := aliasMap[relation]; ok == false {
+		return r
+	}
+	a := aliasMap[relation]
+	providerMap := provider.ApiProviderMap
+	if _, ok := providerMap[a]; ok == false {
+		return r
+	}
+
+	p := *providerMap[a]
+	p.(provider.DataProvider).SetRelation(relation, a, args)
+	r.eagerHandlers = append(r.eagerHandlers, &p)
+	return r
 }
